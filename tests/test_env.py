@@ -35,7 +35,7 @@ def test_pickup_and_dropoff():
 
     # Step 1: pickup
     obs, rewards, done, info = env.step([ACTION_PICKUP])
-    assert agent.carrying_victim.id == v.id
+    assert agent.carrying_victim_id == v.id
 
     # Step 2-3: move towards shelter (may need a couple moves)
     # compute moves until at shelter

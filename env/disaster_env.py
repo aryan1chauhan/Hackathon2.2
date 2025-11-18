@@ -61,6 +61,7 @@ class Agent:
     capacity: int = 1
     speed: int = 1
     total_rescues: int = 0
+    carrying_victim_id = 0
     total_moves: int = 0
     path_history: List[Tuple[int, int]] = field(default_factory=list)
 

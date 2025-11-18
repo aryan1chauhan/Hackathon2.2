@@ -59,7 +59,7 @@ def run_experiment(mode: str = 'greedy', max_steps: int = 200, save_dir: str = '
             if mode == 'coordinated':
                 for aid, a in assigns.items():
                     if a is not None:
-                        controller.set_assignment(aid, a)
+                        controller.set_assignment(int(aid), a)
             # For ppo_coordinated, assignments are just for logging, PPO acts autonomously
 
         actions = controller.act(obs)
