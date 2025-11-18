@@ -115,7 +115,7 @@ class DisasterReliefGymWrapper(gym.Env):
         # But for simplicity, assume single agent for now, or train separate models per agent
         self.num_agents = self.env.num_agents
 
-    def reset(self, seed=None, options=None):
+    def reset(self, *, seed=None, options=None):
         """
         Reset the environment and return the initial observation.
 

@@ -78,9 +78,9 @@ class TaskExecutor:
         """
         self.num_agents = num_agents
         # mapping agent_id -> assignment string
-        self.assignments = {i: None for i in range(num_agents)}
+        self.assignments: Dict[int, Optional[str]] = {i: None for i in range(num_agents)}
         # internal state: agent_id -> target victim id
-        self._targets = {i: None for i in range(num_agents)}
+        self._targets: Dict[int, Optional[int]] = {i: None for i in range(num_agents)}
 
     def set_assignment(self, agent_id: int, assignment: Optional[str]):
         """
@@ -90,6 +90,8 @@ class TaskExecutor:
             agent_id (int): ID of the agent to assign the task to.
             assignment (Optional[str]): Assignment string or None.
         """
+        if agent_id not in self.assignments:
+            raise ValueError(f"Invalid agent_id {agent_id}. Must be between 0 and {self.num_agents - 1}.")
         self.assignments[agent_id] = assignment
         # parse assignment
         if assignment and assignment.strip().lower().startswith('rescue'):

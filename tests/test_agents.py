@@ -5,7 +5,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from env import DisasterReliefEnv
 from agents import GreedyAgent, TaskExecutor
-from env.constants import ACTION_PICKUP, ACTION_DROPOFF, ACTION_STAY
+from env.constants import ACTION_PICKUP, ACTION_DROPOFF, ACTION_STAY, CellType
 
 
 def test_greedy_agent_moves_to_nearest_victim():
@@ -32,6 +32,8 @@ def test_greedy_agent_moves_to_nearest_victim():
 def test_task_executor_rescue_flow():
     env = DisasterReliefEnv(grid_size=6, num_agents=1, num_shelters=1, num_depots=1, seed=5)
     env.reset()
+    
+
 
     # Put agent and victim in known positions
     env.agents[0].pos = (1, 1)
@@ -43,7 +45,6 @@ def test_task_executor_rescue_flow():
     # ensure a shelter exists at a reachable position
     env.shelters = [(1, 2)]
     # clear obstacles to ensure path is clear
-    env.obstacles = []
 
     executor = TaskExecutor(num_agents=1)
     executor.set_assignment(0, f'rescue V{victim_id}')
