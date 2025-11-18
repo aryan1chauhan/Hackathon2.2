@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster LLM Coordinator Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Disaster LLM Coordinator Demo</h1>
+            <div class="controls">
+                <select id="modeSelect">
+                    <option value="greedy">Greedy</option>
+                    <option value="assigned">Assigned</option>
+                    <option value="coordinated">Coordinated</option>
+                    <option value="llm">LLM</option>
+                </select>
+                <button id="startButton">Start</button>
+                <button id="pauseButton">Pause</button>
+                <button id="stepButton">Step</button>
+                <button id="resetButton">Reset</button>
+            </div>
+        </header>
+        <main>
+            <div class="grid-panel">
+                <h2>Simulation Grid</h2>
+                <div id="simulationGrid" class="grid"></div>
+            </div>
+            <div class="info-panels">
+                <div class="metrics-panel">
+                    <h2>Metrics</h2>
+                    <div class="metric">
+                        <label>Throughput:</label>
+                        <span id="throughput">0</span>
+                    </div>
+                    <div class="metric">
+                        <label>Avg Wait Time:</label>
+                        <span id="avgWaitTime">0</span>
+                    </div>
+                    <div class="metric">
+                        <label>Fairness (Jain Index):</label>
+                        <span id="fairness">0</span>
+                    </div>
+                    <div class="metric">
+                        <label>Step:</label>
+                        <span id="currentStep">0</span>
+                    </div>
+                </div>
+                <div class="log-panel">
+                    <h2>Logs</h2>
+                    <div id="logOutput" class="log-output"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

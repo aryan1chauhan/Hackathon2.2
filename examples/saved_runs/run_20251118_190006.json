@@ -1,0 +1,6020 @@
+{
+  "started_at": "2025-11-18T13:30:06.159061Z",
+  "grid_size": 10,
+  "num_agents": 3,
+  "steps": [
+    {
+      "step": 1,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 1,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            1,
+            0
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 1
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 1
+        },
+        {
+          "id": 2,
+          "pos": [
+            2,
+            0
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 1
+        }
+      ],
+      "victims": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "severity": 1,
+          "severity_name": "STABLE",
+          "wait_time": 1,
+          "max_wait": 134,
+          "urgency": 2.029850746268657,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 1,
+          "max_wait": 53,
+          "urgency": 6.0754716981132075,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 1,
+          "max_wait": 42,
+          "urgency": 6.095238095238095,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "actions": [
+        4,
+        5,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        12.140943396226415,
+        -0.01
+      ],
+      "info": {
+        "step": 2,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 2,
+        "agents_carrying": 1
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            2,
+            0
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 2
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 1
+        },
+        {
+          "id": 2,
+          "pos": [
+            3,
+            0
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 2
+        }
+      ],
+      "victims": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "severity": 1,
+          "severity_name": "STABLE",
+          "wait_time": 2,
+          "max_wait": 134,
+          "urgency": 2.0597014925373136,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 2,
+          "max_wait": 53,
+          "urgency": 6.150943396226415,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 2,
+          "max_wait": 42,
+          "urgency": 6.190476190476191,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 3,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 2,
+        "agents_carrying": 1
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            3,
+            0
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 3
+        },
+        {
+          "id": 1,
+          "pos": [
+            4,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 2
+        },
+        {
+          "id": 2,
+          "pos": [
+            4,
+            0
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 3
+        }
+      ],
+      "victims": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "severity": 1,
+          "severity_name": "STABLE",
+          "wait_time": 3,
+          "max_wait": 134,
+          "urgency": 2.08955223880597,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 3,
+          "max_wait": 53,
+          "urgency": 6.226415094339623,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 3,
+          "max_wait": 42,
+          "urgency": 6.285714285714286,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 0,
+          "max_wait": 60,
+          "urgency": 6.0,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 4,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 2,
+        "agents_carrying": 1
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            4,
+            0
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 4
+        },
+        {
+          "id": 1,
+          "pos": [
+            5,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 3
+        },
+        {
+          "id": 2,
+          "pos": [
+            5,
+            0
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 4
+        }
+      ],
+      "victims": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "severity": 1,
+          "severity_name": "STABLE",
+          "wait_time": 4,
+          "max_wait": 134,
+          "urgency": 2.1194029850746268,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 4,
+          "max_wait": 53,
+          "urgency": 6.30188679245283,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 4,
+          "max_wait": 42,
+          "urgency": 6.380952380952381,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 1,
+          "max_wait": 60,
+          "urgency": 6.066666666666666,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 5,
+      "actions": [
+        4,
+        4,
+        2
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 5,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 2,
+        "agents_carrying": 1
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            0
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 1,
+          "pos": [
+            6,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 4
+        },
+        {
+          "id": 2,
+          "pos": [
+            5,
+            1
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 5
+        }
+      ],
+      "victims": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "severity": 1,
+          "severity_name": "STABLE",
+          "wait_time": 5,
+          "max_wait": 134,
+          "urgency": 2.1492537313432836,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 5,
+          "max_wait": 53,
+          "urgency": 6.377358490566038,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 5,
+          "max_wait": 42,
+          "urgency": 6.476190476190476,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 2,
+          "max_wait": 60,
+          "urgency": 6.133333333333334,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 6,
+      "actions": [
+        2,
+        4,
+        2
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 6,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 2,
+        "agents_carrying": 1
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            1
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 6
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            5,
+            2
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 6
+        }
+      ],
+      "victims": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "severity": 1,
+          "severity_name": "STABLE",
+          "wait_time": 6,
+          "max_wait": 134,
+          "urgency": 2.1791044776119404,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 6,
+          "max_wait": 53,
+          "urgency": 6.452830188679245,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 6,
+          "max_wait": 42,
+          "urgency": 6.571428571428571,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 3,
+          "max_wait": 60,
+          "urgency": 6.2,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 7,
+      "actions": [
+        2,
+        4,
+        5
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        4.348208955223881
+      ],
+      "info": {
+        "step": 7,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 1,
+        "agents_carrying": 2
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 0,
+          "total_moves": 7
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            5,
+            2
+          ],
+          "state": "carrying",
+          "carrying": 0,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 6
+        }
+      ],
+      "victims": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "severity": 1,
+          "severity_name": "STABLE",
+          "wait_time": 7,
+          "max_wait": 134,
+          "urgency": 2.208955223880597,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 7,
+          "max_wait": 53,
+          "urgency": 6.528301886792453,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 7,
+          "max_wait": 42,
+          "urgency": 6.666666666666667,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 4,
+          "max_wait": 60,
+          "urgency": 6.266666666666667,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 8,
+      "actions": [
+        5,
+        4,
+        4
+      ],
+      "rewards": [
+        4.407910447761195,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 8,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "state": "carrying",
+          "carrying": 0,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 7
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            6,
+            2
+          ],
+          "state": "carrying",
+          "carrying": 0,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 7
+        }
+      ],
+      "victims": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "severity": 1,
+          "severity_name": "STABLE",
+          "wait_time": 8,
+          "max_wait": 134,
+          "urgency": 2.2388059701492535,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 8,
+          "max_wait": 53,
+          "urgency": 6.60377358490566,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 8,
+          "max_wait": 42,
+          "urgency": 6.761904761904762,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 5,
+          "max_wait": 60,
+          "urgency": 6.333333333333333,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 9,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 9,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            6,
+            2
+          ],
+          "state": "carrying",
+          "carrying": 0,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 8
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            2
+          ],
+          "state": "carrying",
+          "carrying": 0,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 8
+        }
+      ],
+      "victims": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "severity": 1,
+          "severity_name": "STABLE",
+          "wait_time": 9,
+          "max_wait": 134,
+          "urgency": 2.2686567164179103,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 9,
+          "max_wait": 53,
+          "urgency": 6.679245283018868,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 9,
+          "max_wait": 42,
+          "urgency": 6.857142857142857,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 6,
+          "max_wait": 60,
+          "urgency": 6.4,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 10,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 10,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            2
+          ],
+          "state": "carrying",
+          "carrying": 0,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 9
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            8,
+            2
+          ],
+          "state": "carrying",
+          "carrying": 0,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 9
+        }
+      ],
+      "victims": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "severity": 1,
+          "severity_name": "STABLE",
+          "wait_time": 10,
+          "max_wait": 134,
+          "urgency": 2.298507462686567,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 10,
+          "max_wait": 53,
+          "urgency": 6.754716981132075,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 10,
+          "max_wait": 42,
+          "urgency": 6.9523809523809526,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 7,
+          "max_wait": 60,
+          "urgency": 6.466666666666667,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 11,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 11,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            8,
+            2
+          ],
+          "state": "carrying",
+          "carrying": 0,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 10
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            9,
+            2
+          ],
+          "state": "carrying",
+          "carrying": 0,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 10
+        }
+      ],
+      "victims": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "severity": 1,
+          "severity_name": "STABLE",
+          "wait_time": 11,
+          "max_wait": 134,
+          "urgency": 2.328358208955224,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 11,
+          "max_wait": 53,
+          "urgency": 6.830188679245283,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 11,
+          "max_wait": 42,
+          "urgency": 7.0476190476190474,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 8,
+          "max_wait": 60,
+          "urgency": 6.533333333333333,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 12,
+      "actions": [
+        4,
+        4,
+        2
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 12,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            9,
+            2
+          ],
+          "state": "carrying",
+          "carrying": 0,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 11
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            9,
+            3
+          ],
+          "state": "carrying",
+          "carrying": 0,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 11
+        }
+      ],
+      "victims": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            2
+          ],
+          "severity": 1,
+          "severity_name": "STABLE",
+          "wait_time": 12,
+          "max_wait": 134,
+          "urgency": 2.3582089552238807,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 12,
+          "max_wait": 53,
+          "urgency": 6.90566037735849,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 12,
+          "max_wait": 42,
+          "urgency": 7.142857142857142,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 9,
+          "max_wait": 60,
+          "urgency": 6.6,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 13,
+      "actions": [
+        2,
+        4,
+        6
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        120.99
+      ],
+      "info": {
+        "step": 13,
+        "total_spawned": 4,
+        "total_rescued": 1,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 1.0,
+        "agents_idle": 1,
+        "agents_carrying": 2
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            9,
+            3
+          ],
+          "state": "carrying",
+          "carrying": 0,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 12
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            9,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 11
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 13,
+          "max_wait": 53,
+          "urgency": 6.981132075471698,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 13,
+          "max_wait": 42,
+          "urgency": 7.238095238095238,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 10,
+          "max_wait": 60,
+          "urgency": 6.666666666666667,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 14,
+      "actions": [
+        6,
+        4,
+        3
+      ],
+      "rewards": [
+        120.99,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 14,
+        "total_spawned": 4,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 1.0,
+        "agents_idle": 2,
+        "agents_carrying": 1
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            9,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 12
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            8,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 12
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 14,
+          "max_wait": 53,
+          "urgency": 7.056603773584905,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 14,
+          "max_wait": 42,
+          "urgency": 7.333333333333333,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 11,
+          "max_wait": 60,
+          "urgency": 6.733333333333333,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 15,
+      "actions": [
+        3,
+        4,
+        3
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 15,
+        "total_spawned": 4,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 1.0,
+        "agents_idle": 2,
+        "agents_carrying": 1
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            8,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 13
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 13
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 15,
+          "max_wait": 53,
+          "urgency": 7.132075471698113,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 15,
+          "max_wait": 42,
+          "urgency": 7.428571428571429,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 12,
+          "max_wait": 60,
+          "urgency": 6.8,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 16,
+      "actions": [
+        3,
+        4,
+        3
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 16,
+        "total_spawned": 4,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 1.0,
+        "agents_idle": 2,
+        "agents_carrying": 1
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 14
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            6,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 14
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 16,
+          "max_wait": 53,
+          "urgency": 7.2075471698113205,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 16,
+          "max_wait": 42,
+          "urgency": 7.523809523809524,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 13,
+          "max_wait": 60,
+          "urgency": 6.866666666666667,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 17,
+      "actions": [
+        3,
+        4,
+        3
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 17,
+        "total_spawned": 4,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 1.0,
+        "agents_idle": 2,
+        "agents_carrying": 1
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            6,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 15
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            5,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 15
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 17,
+          "max_wait": 53,
+          "urgency": 7.283018867924528,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 17,
+          "max_wait": 42,
+          "urgency": 7.619047619047619,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 14,
+          "max_wait": 60,
+          "urgency": 6.933333333333334,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 18,
+      "actions": [
+        3,
+        4,
+        3
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 18,
+        "total_spawned": 4,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 1.0,
+        "agents_idle": 2,
+        "agents_carrying": 1
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 16
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            4,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 16
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 18,
+          "max_wait": 53,
+          "urgency": 7.3584905660377355,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 18,
+          "max_wait": 42,
+          "urgency": 7.714285714285714,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 15,
+          "max_wait": 60,
+          "urgency": 7.0,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 19,
+      "actions": [
+        3,
+        4,
+        3
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 19,
+        "total_spawned": 4,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 1.0,
+        "agents_idle": 2,
+        "agents_carrying": 1
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            4,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 17
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            3,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 17
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 19,
+          "max_wait": 53,
+          "urgency": 7.433962264150943,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 19,
+          "max_wait": 42,
+          "urgency": 7.809523809523809,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 16,
+          "max_wait": 60,
+          "urgency": 7.066666666666666,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 20,
+      "actions": [
+        3,
+        4,
+        2
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 20,
+        "total_spawned": 5,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 1.0,
+        "agents_idle": 2,
+        "agents_carrying": 1
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            3,
+            3
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 18
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            3,
+            4
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 18
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 20,
+          "max_wait": 53,
+          "urgency": 7.509433962264151,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 20,
+          "max_wait": 42,
+          "urgency": 7.904761904761905,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 17,
+          "max_wait": 60,
+          "urgency": 7.133333333333333,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 0,
+          "max_wait": 73,
+          "urgency": 4.0,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 21,
+      "actions": [
+        2,
+        4,
+        5
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        15.008867924528301
+      ],
+      "info": {
+        "step": 21,
+        "total_spawned": 5,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 1.0,
+        "agents_idle": 1,
+        "agents_carrying": 2
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            3,
+            4
+          ],
+          "state": "idle",
+          "carrying": null,
+          "available": true,
+          "total_rescues": 1,
+          "total_moves": 19
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            3,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 18
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 21,
+          "max_wait": 53,
+          "urgency": 7.584905660377359,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 21,
+          "max_wait": 42,
+          "urgency": 8.0,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 18,
+          "max_wait": 60,
+          "urgency": 7.2,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 1,
+          "max_wait": 73,
+          "urgency": 4.054794520547945,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 22,
+      "actions": [
+        5,
+        4,
+        4
+      ],
+      "rewards": [
+        15.159811320754718,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 22,
+        "total_spawned": 5,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            3,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 19
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            4,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 19
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 22,
+          "max_wait": 53,
+          "urgency": 7.660377358490566,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 22,
+          "max_wait": 42,
+          "urgency": 8.095238095238095,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 19,
+          "max_wait": 60,
+          "urgency": 7.266666666666667,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 2,
+          "max_wait": 73,
+          "urgency": 4.109589041095891,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 23,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 23,
+        "total_spawned": 5,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            4,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 20
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            5,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 20
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 23,
+          "max_wait": 53,
+          "urgency": 7.735849056603774,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 23,
+          "max_wait": 42,
+          "urgency": 8.19047619047619,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 20,
+          "max_wait": 60,
+          "urgency": 7.333333333333333,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 3,
+          "max_wait": 73,
+          "urgency": 4.164383561643835,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 24,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 24,
+        "total_spawned": 5,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            5,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 21
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            6,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 21
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 24,
+          "max_wait": 53,
+          "urgency": 7.811320754716981,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 24,
+          "max_wait": 42,
+          "urgency": 8.285714285714285,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 21,
+          "max_wait": 60,
+          "urgency": 7.4,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 4,
+          "max_wait": 73,
+          "urgency": 4.219178082191781,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 25,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 25,
+        "total_spawned": 5,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            6,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 25,
+          "max_wait": 53,
+          "urgency": 7.886792452830189,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 25,
+          "max_wait": 42,
+          "urgency": 8.380952380952381,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 22,
+          "max_wait": 60,
+          "urgency": 7.466666666666667,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 5,
+          "max_wait": 73,
+          "urgency": 4.273972602739726,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 26,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 26,
+        "total_spawned": 5,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 26,
+          "max_wait": 53,
+          "urgency": 7.962264150943396,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 26,
+          "max_wait": 42,
+          "urgency": 8.476190476190476,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 23,
+          "max_wait": 60,
+          "urgency": 7.533333333333333,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 6,
+          "max_wait": 73,
+          "urgency": 4.328767123287671,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 27,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 27,
+        "total_spawned": 5,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 27,
+          "max_wait": 53,
+          "urgency": 8.037735849056604,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 27,
+          "max_wait": 42,
+          "urgency": 8.571428571428571,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 24,
+          "max_wait": 60,
+          "urgency": 7.6,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 7,
+          "max_wait": 73,
+          "urgency": 4.383561643835616,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 28,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 28,
+        "total_spawned": 5,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 28,
+          "max_wait": 53,
+          "urgency": 8.11320754716981,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 28,
+          "max_wait": 42,
+          "urgency": 8.666666666666666,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 25,
+          "max_wait": 60,
+          "urgency": 7.666666666666667,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 8,
+          "max_wait": 73,
+          "urgency": 4.438356164383562,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 29,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 29,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 29,
+          "max_wait": 53,
+          "urgency": 8.18867924528302,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 29,
+          "max_wait": 42,
+          "urgency": 8.761904761904763,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 26,
+          "max_wait": 60,
+          "urgency": 7.733333333333333,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 9,
+          "max_wait": 73,
+          "urgency": 4.493150684931507,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 0,
+          "max_wait": 49,
+          "urgency": 6.0,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 30,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 30,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 30,
+          "max_wait": 53,
+          "urgency": 8.264150943396226,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 30,
+          "max_wait": 42,
+          "urgency": 8.857142857142858,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 27,
+          "max_wait": 60,
+          "urgency": 7.8,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 10,
+          "max_wait": 73,
+          "urgency": 4.5479452054794525,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 1,
+          "max_wait": 49,
+          "urgency": 6.081632653061225,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 31,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 31,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 31,
+          "max_wait": 53,
+          "urgency": 8.339622641509434,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 31,
+          "max_wait": 42,
+          "urgency": 8.952380952380953,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 28,
+          "max_wait": 60,
+          "urgency": 7.866666666666667,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 11,
+          "max_wait": 73,
+          "urgency": 4.602739726027397,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 2,
+          "max_wait": 49,
+          "urgency": 6.163265306122449,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 32,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 32,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 32,
+          "max_wait": 53,
+          "urgency": 8.415094339622641,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 32,
+          "max_wait": 42,
+          "urgency": 9.047619047619047,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 29,
+          "max_wait": 60,
+          "urgency": 7.933333333333334,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 12,
+          "max_wait": 73,
+          "urgency": 4.657534246575342,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 3,
+          "max_wait": 49,
+          "urgency": 6.244897959183674,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 33,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 33,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 33,
+          "max_wait": 53,
+          "urgency": 8.49056603773585,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 33,
+          "max_wait": 42,
+          "urgency": 9.142857142857142,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 30,
+          "max_wait": 60,
+          "urgency": 8.0,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 13,
+          "max_wait": 73,
+          "urgency": 4.712328767123288,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 4,
+          "max_wait": 49,
+          "urgency": 6.326530612244898,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 34,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 34,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 34,
+          "max_wait": 53,
+          "urgency": 8.566037735849056,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 34,
+          "max_wait": 42,
+          "urgency": 9.238095238095237,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 31,
+          "max_wait": 60,
+          "urgency": 8.066666666666666,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 14,
+          "max_wait": 73,
+          "urgency": 4.767123287671232,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 5,
+          "max_wait": 49,
+          "urgency": 6.408163265306122,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 35,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 35,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 35,
+          "max_wait": 53,
+          "urgency": 8.641509433962264,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 35,
+          "max_wait": 42,
+          "urgency": 9.333333333333334,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 32,
+          "max_wait": 60,
+          "urgency": 8.133333333333333,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 15,
+          "max_wait": 73,
+          "urgency": 4.821917808219178,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 6,
+          "max_wait": 49,
+          "urgency": 6.489795918367347,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 36,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 36,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 36,
+          "max_wait": 53,
+          "urgency": 8.716981132075471,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 36,
+          "max_wait": 42,
+          "urgency": 9.428571428571429,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 33,
+          "max_wait": 60,
+          "urgency": 8.2,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 16,
+          "max_wait": 73,
+          "urgency": 4.876712328767123,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 7,
+          "max_wait": 49,
+          "urgency": 6.571428571428571,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 37,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 37,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 37,
+          "max_wait": 53,
+          "urgency": 8.79245283018868,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 37,
+          "max_wait": 42,
+          "urgency": 9.523809523809524,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 34,
+          "max_wait": 60,
+          "urgency": 8.266666666666666,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 17,
+          "max_wait": 73,
+          "urgency": 4.931506849315069,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 8,
+          "max_wait": 49,
+          "urgency": 6.653061224489796,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 38,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 38,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 38,
+          "max_wait": 53,
+          "urgency": 8.867924528301886,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 38,
+          "max_wait": 42,
+          "urgency": 9.619047619047619,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 35,
+          "max_wait": 60,
+          "urgency": 8.333333333333334,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 18,
+          "max_wait": 73,
+          "urgency": 4.986301369863014,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 9,
+          "max_wait": 49,
+          "urgency": 6.73469387755102,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 39,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 39,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 39,
+          "max_wait": 53,
+          "urgency": 8.943396226415095,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 39,
+          "max_wait": 42,
+          "urgency": 9.714285714285715,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 36,
+          "max_wait": 60,
+          "urgency": 8.4,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 19,
+          "max_wait": 73,
+          "urgency": 5.041095890410959,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 10,
+          "max_wait": 49,
+          "urgency": 6.816326530612245,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 40,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 40,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 40,
+          "max_wait": 53,
+          "urgency": 9.018867924528301,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 40,
+          "max_wait": 42,
+          "urgency": 9.80952380952381,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 37,
+          "max_wait": 60,
+          "urgency": 8.466666666666667,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 20,
+          "max_wait": 73,
+          "urgency": 5.095890410958904,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 11,
+          "max_wait": 49,
+          "urgency": 6.8979591836734695,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 41,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 41,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 1.0,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 41,
+          "max_wait": 53,
+          "urgency": 9.09433962264151,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 2,
+          "pos": [
+            1,
+            9
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 41,
+          "max_wait": 42,
+          "urgency": 9.904761904761905,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 38,
+          "max_wait": 60,
+          "urgency": 8.533333333333333,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 21,
+          "max_wait": 73,
+          "urgency": 5.1506849315068495,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 12,
+          "max_wait": 49,
+          "urgency": 6.979591836734694,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 42,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 42,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.6666666666666666,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 42,
+          "max_wait": 53,
+          "urgency": 9.169811320754718,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 39,
+          "max_wait": 60,
+          "urgency": 8.6,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 22,
+          "max_wait": 73,
+          "urgency": 5.205479452054794,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 13,
+          "max_wait": 49,
+          "urgency": 7.061224489795919,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 43,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 43,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.6666666666666666,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 43,
+          "max_wait": 53,
+          "urgency": 9.245283018867925,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 40,
+          "max_wait": 60,
+          "urgency": 8.666666666666666,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 23,
+          "max_wait": 73,
+          "urgency": 5.260273972602739,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 14,
+          "max_wait": 49,
+          "urgency": 7.142857142857142,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 44,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 44,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.6666666666666666,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 44,
+          "max_wait": 53,
+          "urgency": 9.320754716981131,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 41,
+          "max_wait": 60,
+          "urgency": 8.733333333333334,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 24,
+          "max_wait": 73,
+          "urgency": 5.315068493150685,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 15,
+          "max_wait": 49,
+          "urgency": 7.224489795918368,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 45,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 45,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.6666666666666666,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 45,
+          "max_wait": 53,
+          "urgency": 9.39622641509434,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 42,
+          "max_wait": 60,
+          "urgency": 8.8,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 25,
+          "max_wait": 73,
+          "urgency": 5.36986301369863,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 16,
+          "max_wait": 49,
+          "urgency": 7.3061224489795915,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 46,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 46,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.6666666666666666,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 46,
+          "max_wait": 53,
+          "urgency": 9.471698113207548,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 43,
+          "max_wait": 60,
+          "urgency": 8.866666666666667,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 26,
+          "max_wait": 73,
+          "urgency": 5.424657534246576,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 17,
+          "max_wait": 49,
+          "urgency": 7.387755102040816,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 47,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 47,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.6666666666666666,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 47,
+          "max_wait": 53,
+          "urgency": 9.547169811320755,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 44,
+          "max_wait": 60,
+          "urgency": 8.933333333333334,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 27,
+          "max_wait": 73,
+          "urgency": 5.47945205479452,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 18,
+          "max_wait": 49,
+          "urgency": 7.469387755102041,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 48,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 48,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.6666666666666666,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 48,
+          "max_wait": 53,
+          "urgency": 9.622641509433961,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 45,
+          "max_wait": 60,
+          "urgency": 9.0,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 28,
+          "max_wait": 73,
+          "urgency": 5.534246575342466,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 19,
+          "max_wait": 49,
+          "urgency": 7.551020408163265,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 49,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 49,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.6666666666666666,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 49,
+          "max_wait": 53,
+          "urgency": 9.69811320754717,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 46,
+          "max_wait": 60,
+          "urgency": 9.066666666666666,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 29,
+          "max_wait": 73,
+          "urgency": 5.589041095890411,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 20,
+          "max_wait": 49,
+          "urgency": 7.63265306122449,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    },
+    {
+      "step": 50,
+      "actions": [
+        4,
+        4,
+        4
+      ],
+      "rewards": [
+        -0.01,
+        -0.01,
+        -0.01
+      ],
+      "info": {
+        "step": 50,
+        "total_spawned": 6,
+        "total_rescued": 2,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.6666666666666666,
+        "agents_idle": 0,
+        "agents_carrying": 3
+      },
+      "agents": [
+        {
+          "id": 0,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 23
+        },
+        {
+          "id": 1,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 0,
+          "total_moves": 5
+        },
+        {
+          "id": 2,
+          "pos": [
+            7,
+            4
+          ],
+          "state": "carrying",
+          "carrying": 1,
+          "available": false,
+          "total_rescues": 1,
+          "total_moves": 22
+        }
+      ],
+      "victims": [
+        {
+          "id": 1,
+          "pos": [
+            3,
+            4
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 50,
+          "max_wait": 53,
+          "urgency": 9.773584905660378,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 3,
+          "pos": [
+            2,
+            8
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 47,
+          "max_wait": 60,
+          "urgency": 9.133333333333333,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 4,
+          "pos": [
+            3,
+            2
+          ],
+          "severity": 2,
+          "severity_name": "SERIOUS",
+          "wait_time": 30,
+          "max_wait": 73,
+          "urgency": 5.643835616438356,
+          "rescued": false,
+          "died": false
+        },
+        {
+          "id": 5,
+          "pos": [
+            7,
+            6
+          ],
+          "severity": 3,
+          "severity_name": "CRITICAL",
+          "wait_time": 21,
+          "max_wait": 49,
+          "urgency": 7.714285714285714,
+          "rescued": false,
+          "died": false
+        }
+      ]
+    }
+  ],
+  "ended_at": "2025-11-18T13:30:06.164549Z",
+  "summary": {
+    "total_spawned": 6,
+    "total_rescued": 2,
+    "total_died": 1,
+    "steps": 50
+  }
+}

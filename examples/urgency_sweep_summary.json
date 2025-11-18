@@ -1,0 +1,164 @@
+{
+  "greedy": {
+    "avg_rescued": 4.333333333333333,
+    "avg_died": 6.0,
+    "avg_spawned": 13.666666666666666,
+    "avg_steps": 200.0
+  },
+  "sweep": {
+    "0.0": {
+      "avg_rescued": 2.6666666666666665,
+      "avg_died": 6.333333333333333,
+      "avg_spawned": 13.666666666666666,
+      "avg_steps": 200.0
+    },
+    "1.0": {
+      "avg_rescued": 4.666666666666667,
+      "avg_died": 5.333333333333333,
+      "avg_spawned": 13.666666666666666,
+      "avg_steps": 200.0
+    },
+    "2.0": {
+      "avg_rescued": 3.6666666666666665,
+      "avg_died": 5.333333333333333,
+      "avg_spawned": 13.666666666666666,
+      "avg_steps": 200.0
+    },
+    "4.0": {
+      "avg_rescued": 3.6666666666666665,
+      "avg_died": 5.333333333333333,
+      "avg_spawned": 13.666666666666666,
+      "avg_steps": 200.0
+    },
+    "8.0": {
+      "avg_rescued": 3.6666666666666665,
+      "avg_died": 5.333333333333333,
+      "avg_spawned": 13.666666666666666,
+      "avg_steps": 200.0
+    }
+  },
+  "raw": {
+    "greedy": [
+      {
+        "total_spawned": 9,
+        "total_rescued": 6,
+        "total_died": 1,
+        "steps": 200
+      },
+      {
+        "total_spawned": 17,
+        "total_rescued": 5,
+        "total_died": 6,
+        "steps": 200
+      },
+      {
+        "total_spawned": 15,
+        "total_rescued": 2,
+        "total_died": 11,
+        "steps": 200
+      }
+    ],
+    "sweep": {
+      "0.0": [
+        {
+          "total_spawned": 9,
+          "total_rescued": 4,
+          "total_died": 1,
+          "steps": 200
+        },
+        {
+          "total_spawned": 17,
+          "total_rescued": 3,
+          "total_died": 7,
+          "steps": 200
+        },
+        {
+          "total_spawned": 15,
+          "total_rescued": 1,
+          "total_died": 11,
+          "steps": 200
+        }
+      ],
+      "1.0": [
+        {
+          "total_spawned": 9,
+          "total_rescued": 4,
+          "total_died": 1,
+          "steps": 200
+        },
+        {
+          "total_spawned": 17,
+          "total_rescued": 7,
+          "total_died": 6,
+          "steps": 200
+        },
+        {
+          "total_spawned": 15,
+          "total_rescued": 3,
+          "total_died": 9,
+          "steps": 200
+        }
+      ],
+      "2.0": [
+        {
+          "total_spawned": 9,
+          "total_rescued": 4,
+          "total_died": 1,
+          "steps": 200
+        },
+        {
+          "total_spawned": 17,
+          "total_rescued": 4,
+          "total_died": 6,
+          "steps": 200
+        },
+        {
+          "total_spawned": 15,
+          "total_rescued": 3,
+          "total_died": 9,
+          "steps": 200
+        }
+      ],
+      "4.0": [
+        {
+          "total_spawned": 9,
+          "total_rescued": 4,
+          "total_died": 1,
+          "steps": 200
+        },
+        {
+          "total_spawned": 17,
+          "total_rescued": 4,
+          "total_died": 6,
+          "steps": 200
+        },
+        {
+          "total_spawned": 15,
+          "total_rescued": 3,
+          "total_died": 9,
+          "steps": 200
+        }
+      ],
+      "8.0": [
+        {
+          "total_spawned": 9,
+          "total_rescued": 4,
+          "total_died": 1,
+          "steps": 200
+        },
+        {
+          "total_spawned": 17,
+          "total_rescued": 4,
+          "total_died": 6,
+          "steps": 200
+        },
+        {
+          "total_spawned": 15,
+          "total_rescued": 3,
+          "total_died": 9,
+          "steps": 200
+        }
+      ]
+    }
+  }
+}

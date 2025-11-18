@@ -1,0 +1,10 @@
+# requirements.txt for backend API
+fastapi
+uvicorn
+numpy
+matplotlib
+scipy
+pandas
+stable-baselines3
+gymnasium
+tensorboard

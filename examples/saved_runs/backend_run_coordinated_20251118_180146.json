@@ -1,0 +1,1919 @@
+{
+  "started_at": "2025-11-18T12:31:46.593462Z",
+  "mode": "coordinated",
+  "steps": [
+    {
+      "step": 1,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 1,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 2,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 2,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 3,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 3,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 4,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 4,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 5,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 5,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 6,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 6,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 7,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 7,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 8,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 8,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 9,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 9,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 10,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 10,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 11,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 11,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 12,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 12,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 13,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 13,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 14,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 14,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 15,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 15,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 16,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 16,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 17,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 17,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 18,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 18,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 19,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 19,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 20,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 20,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 21,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 21,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 22,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 22,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 23,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 23,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 24,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 24,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 25,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 25,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 26,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 26,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 27,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 27,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 28,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 28,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 29,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 29,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 30,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 30,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 31,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 31,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 32,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 32,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 33,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 33,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 34,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 34,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 35,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 35,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 36,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 36,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 37,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 37,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 38,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 38,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 39,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 39,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 40,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 40,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 41,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 41,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 42,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 42,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 43,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 43,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 44,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 44,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 45,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 45,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 46,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 46,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 47,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 47,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 48,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 48,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 49,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 49,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 50,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 50,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 51,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 51,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 52,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 52,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 53,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 53,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 54,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 54,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 55,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 55,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 56,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 56,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 57,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 57,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 58,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 58,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 59,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 59,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 60,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 60,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 61,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 61,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 62,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 62,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 63,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 63,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 64,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 64,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 65,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 65,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 66,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 66,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 67,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 67,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 68,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 68,
+        "total_spawned": 3,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 69,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 69,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 70,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 70,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 71,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 71,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 72,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 72,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 73,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 73,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 74,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 74,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 75,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 75,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 76,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 76,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 77,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 77,
+        "total_spawned": 4,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 78,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 78,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 79,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 79,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 80,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 80,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 0,
+        "active_victims": 5,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 81,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 81,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 82,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 82,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 83,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 83,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 84,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 84,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 1,
+        "active_victims": 4,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 85,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 85,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 86,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 86,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 87,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 87,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 88,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 88,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 89,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 89,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 90,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 90,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 91,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 91,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 92,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 92,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 93,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 93,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 94,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 94,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 95,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 95,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 96,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 96,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 97,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 97,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 98,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 98,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 99,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 99,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    },
+    {
+      "step": 100,
+      "actions": [
+        0,
+        0,
+        0
+      ],
+      "info": {
+        "step": 100,
+        "total_spawned": 5,
+        "total_rescued": 0,
+        "total_died": 2,
+        "active_victims": 3,
+        "success_rate": 0.0,
+        "agents_idle": 3,
+        "agents_carrying": 0
+      }
+    }
+  ],
+  "ended_at": "2025-11-18T12:31:46.726828Z",
+  "summary": {
+    "total_spawned": 5,
+    "total_rescued": 0,
+    "total_died": 2,
+    "steps": 100,
+    "avg_wait_time": 0,
+    "agent_workloads": {},
+    "episode_rewards": [
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03,
+      -0.03
+    ],
+    "llm_success_rate": 1.0,
+    "fallback_count": 0
+  }
+}

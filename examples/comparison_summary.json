@@ -1,0 +1,58 @@
+{
+  "results": {
+    "greedy": [
+      {
+        "total_spawned": 20,
+        "total_rescued": 8,
+        "total_died": 8,
+        "steps": 200
+      },
+      {
+        "total_spawned": 17,
+        "total_rescued": 4,
+        "total_died": 8,
+        "steps": 200
+      },
+      {
+        "total_spawned": 21,
+        "total_rescued": 4,
+        "total_died": 17,
+        "steps": 200
+      }
+    ],
+    "coordinated": [
+      {
+        "total_spawned": 20,
+        "total_rescued": 4,
+        "total_died": 6,
+        "steps": 200
+      },
+      {
+        "total_spawned": 17,
+        "total_rescued": 6,
+        "total_died": 6,
+        "steps": 200
+      },
+      {
+        "total_spawned": 21,
+        "total_rescued": 1,
+        "total_died": 17,
+        "steps": 200
+      }
+    ]
+  },
+  "summary": {
+    "greedy": {
+      "avg_rescued": 5.333333333333333,
+      "avg_died": 11,
+      "avg_spawned": 19.333333333333332,
+      "avg_steps": 200
+    },
+    "coordinated": {
+      "avg_rescued": 3.6666666666666665,
+      "avg_died": 9.666666666666666,
+      "avg_spawned": 19.333333333333332,
+      "avg_steps": 200
+    }
+  }
+}
