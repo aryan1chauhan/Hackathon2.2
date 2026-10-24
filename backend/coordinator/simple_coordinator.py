@@ -60,9 +60,15 @@ class SimpleCoordinator:
         assignments: Dict[int, Optional[str]] = {a["id"]: None for a in agents_data}
 
         # Filter active, unrescued, non-dead victims
+        carried_ids = {
+            victim_id
+            for agent in agents_data
+            for victim_id in (agent.get("inventory") or ([agent.get("carrying")] if agent.get("carrying") is not None else []))
+        }
         active_victims = [
             v for v in obs.get("victims", [])
             if not v.get("rescued", False) and not v.get("died", False)
+            and v["id"] not in carried_ids
         ]
 
         # Edge Case EC-3.4: Zero active victims on the grid

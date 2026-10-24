@@ -290,46 +290,64 @@ class DisasterReliefEnv:
         rewards = [0.0] * self.num_agents
 
         hub_cells = set(self.shelters) | set(self.depots)
-        committed_positions: set[Tuple[int, int]] = set()
+        joint_actions = [actions[i] if i < len(actions) else ACTION_STAY for i in range(self.num_agents)]
 
-        # Map actions to agents
-        for i, agent in enumerate(self.agents):
-            action = actions[i] if i < len(actions) else ACTION_STAY
-            curr_pos = agent.pos
+        # Resolve movement as a joint transition so an agent can follow another
+        # into a cell that is vacated during this same timestep.
+        proposed_positions: Dict[int, Tuple[int, int]] = {}
+        for i, (agent, action) in enumerate(zip(self.agents, joint_actions)):
+            if action not in ACTION_DELTAS or action == ACTION_STAY:
+                continue
+            dx, dy = ACTION_DELTAS[action]
+            target = (agent.pos[0] + dx, agent.pos[1] + dy)
+            if (0 <= target[0] < self.grid_size and 0 <= target[1] < self.grid_size
+                    and target not in self.obstacles):
+                proposed_positions[i] = target
 
-            # --- Physical Movement [1, 2, 3, 4] ---
-            if action in ACTION_DELTAS and action != ACTION_STAY:
-                dx, dy = ACTION_DELTAS[action]
-                nx = curr_pos[0] + dx
-                ny = curr_pos[1] + dy
+        # Only one agent may claim a non-hub cell. Lower IDs keep the existing
+        # deterministic tie priority used by the movement rules.
+        claimed: Dict[Tuple[int, int], int] = {}
+        for i in sorted(proposed_positions):
+            target = proposed_positions[i]
+            if target in hub_cells:
+                continue
+            if target in claimed:
+                proposed_positions.pop(i)
+            else:
+                claimed[target] = i
 
-                # Boundary check
-                if 0 <= nx < self.grid_size and 0 <= ny < self.grid_size:
-                    # Obstacle collision check
-                    if (nx, ny) not in self.obstacles:
-                        target_pos = (nx, ny)
-                        collision = False
-                        if target_pos not in hub_cells:
-                            # 1. Collision with lower-index agent's committed move
-                            if target_pos in committed_positions:
-                                collision = True
-                            # 2. Collision with higher-index agent currently at target_pos
-                            elif any(self.agents[j].pos == target_pos for j in range(i + 1, len(self.agents))):
-                                collision = True
+        # Head-on swaps are blocked. Other moves into occupied cells are allowed
+        # only when every occupant has a surviving move out of that cell.
+        rejected = set()
+        for i, target in proposed_positions.items():
+            for j, other in enumerate(self.agents):
+                if i != j and target == other.pos and proposed_positions.get(j) == self.agents[i].pos:
+                    rejected.update((i, j))
+        for i in rejected:
+            proposed_positions.pop(i, None)
 
-                        if not collision:
-                            agent.pos = target_pos
-                            agent.total_moves += 1
-                            rewards[i] -= 0.05  # Slight energy/time movement penalty
+        changed = True
+        while changed:
+            changed = False
+            for i, target in list(proposed_positions.items()):
+                if target in hub_cells:
+                    continue
+                occupants = [j for j, other in enumerate(self.agents) if j != i and other.pos == target]
+                if any(j not in proposed_positions for j in occupants):
+                    proposed_positions.pop(i)
+                    changed = True
 
-                            # If carrying victim(s), update victim positions
-                            carrying = getattr(agent, "inventory", [agent.carrying_victim] if agent.carrying_victim else [])
-                            for v in carrying:
-                                if v is not None:
-                                    v.pos = agent.pos
+        for i, target in proposed_positions.items():
+            agent = self.agents[i]
+            agent.pos = target
+            agent.total_moves += 1
+            rewards[i] -= 0.05
+            for victim in agent.inventory:
+                victim.pos = target
 
-            # --- Pickup Action [5] ---
-            elif action == ACTION_PICKUP:
+        # Pickup and dropoff actions are applied after joint movement.
+        for i, (agent, action) in enumerate(zip(self.agents, joint_actions)):
+            if action == ACTION_PICKUP:
                 if len(agent.inventory) < agent.max_capacity:
                     # Locate active victim at current agent cell
                     candidates = [
@@ -358,10 +376,6 @@ class DisasterReliefEnv:
                         rewards[i] += 10.0  # Significant delivery reward
                     agent.inventory = []
                     agent.state = STATE_IDLE
-
-            # Track committed position for collision prevention
-            if agent.pos not in hub_cells:
-                committed_positions.add(agent.pos)
 
         # --- Victim Health Deterioration ---
         # Note: executed after actions so simultaneous pickup avoids decay

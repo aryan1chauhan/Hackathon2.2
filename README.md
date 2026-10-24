@@ -1,6 +1,71 @@
+![tag:innovationlab](https://img.shields.io/badge/innovationlab-3D8BD3)
+![tag:hackathon](https://img.shields.io/badge/hackathon-5F43F1)
+
 # Disaster LLM Coordinator
 
-A multi-agent simulation framework for disaster relief coordination, resource allocation, and LLM-assisted multi-agent operations.
+A multi-agent simulation framework for disaster relief coordination, resource allocation, and LLM-assisted multi-agent operations — now with a **Fetch.ai ASI:One** chat agent layer.
+
+---
+
+## ASI:One Agent: AegisCoord
+
+### Problem
+Emergency disaster coordinators need to evaluate rescue strategies (greedy heuristics vs. optimal assignment vs. LLM-driven planning) **before** deploying field teams. Running complex multi-agent simulations typically requires installing software, configuring environments, and reading technical documentation.
+
+### Target Users
+- Disaster response planners & emergency coordinators
+- AI/ML researchers benchmarking multi-agent coordination
+- Hackathon judges evaluating multi-agent resource allocation
+
+### Outcome
+A single conversational agent on ASI:One that accepts natural-language disaster scenarios, runs headless multi-strategy simulations, and returns a structured comparison of survival rates, fairness indices, and rescue efficiency — all inside a chat window, no custom frontend required.
+
+### Agent Details
+- **Name**: `aegiscoord`
+- **Address**: `agent1qgrg84zhqljlntxkgln6qqj5pcctdjk2fqthesz6shn3j37rdvrfgfvd6ez`
+- **Protocol**: Agent Chat Protocol (ACP)
+- **Discovery**: Agentverse Almanac + ASI:One
+
+### How to Run
+
+```bash
+# 1. Install main project deps (if not already)
+pip install -r requirements.txt
+
+# 2. Install Fetch.ai agent deps
+pip install -r fetch_agent/requirements.txt
+
+# 3. Set environment variables
+#    Required for ASI:One LLM parsing (optional — falls back to regex):
+export ASI1_API_KEY=your_asi1_api_key
+#    Required for LLM coordination mode (optional — falls back to heuristic):
+export GEMINI_API_KEY=your_gemini_api_key
+
+# 4. Start the agent
+python fetch_agent/agent.py
+```
+
+On first run, the agent prints its address and an Agentverse inspector URL. Open the inspector link in your browser, log into Agentverse, and click **Connect → Mailbox** to register.
+
+### How to Test in ASI:One
+1. Start the agent locally (`python fetch_agent/agent.py`).
+2. Connect it to Agentverse via the inspector URL (see console output).
+3. Copy the agent address and open [ASI:One chat](https://asi1.ai).
+4. Start a new chat, paste the agent address, and send a scenario prompt.
+
+### How to Test Locally (No Network)
+```bash
+python fetch_agent/test_local.py
+```
+
+### Sample Prompts
+- `"3 victims at various locations, 2 rescue teams, compare all strategies"`
+- `"5 victims, 3 agents, 30 steps, seed 99, compare greedy and coordinated"`
+- `"Critical mass-casualty event, 10 victims, 4 rescue units, compare hungarian vs llm"`
+- `"Run a default disaster simulation"`
+
+---
+
 
 ## Features
 

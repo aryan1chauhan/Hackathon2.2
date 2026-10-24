@@ -116,15 +116,27 @@ class TaskExecutor:
         hub_cells = shelters_set | depots_set
 
         # Build active victim lookup map: {id: victim_dict}
+        carried_ids = {
+            victim_id
+            for agent in agent_infos
+            for victim_id in (agent.get("inventory") or ([agent.get("carrying")] if agent.get("carrying") is not None else []))
+        }
         active_victims = {
             v["id"]: v
             for v in obs.get("victims", [])
             if not v.get("rescued", False) and not v.get("died", False)
+            and v["id"] not in carried_ids
         }
 
         for aid in range(self.num_agents):
             agent_info = agent_infos[aid] if aid < len(agent_infos) else {"pos": (0, 0), "carrying": None}
             my_pos = tuple(agent_info["pos"])
+            occupied_next_positions = {
+                tuple(other["pos"])
+                for other_id, other in enumerate(agent_infos)
+                if other_id != aid and tuple(other["pos"]) not in hub_cells
+            }
+            blocked_next_positions = reserved_next_positions | occupied_next_positions
 
             # Check inventory capacity
             inv_ids = agent_info.get("inventory")
@@ -177,7 +189,7 @@ class TaskExecutor:
                         target_pos,
                         obstacles,
                         grid_size,
-                        dynamic_blocked_next=reserved_next_positions,
+                        dynamic_blocked_next=blocked_next_positions,
                     )
                     actions.append(act)
 
@@ -198,7 +210,7 @@ class TaskExecutor:
                             shelter_pos,
                             obstacles,
                             grid_size,
-                            dynamic_blocked_next=reserved_next_positions,
+                            dynamic_blocked_next=blocked_next_positions,
                         )
                         actions.append(act)
 
@@ -225,7 +237,7 @@ class TaskExecutor:
                             target_pos,
                             obstacles,
                             grid_size,
-                            dynamic_blocked_next=reserved_next_positions,
+                            dynamic_blocked_next=blocked_next_positions,
                         )
                         actions.append(act)
 

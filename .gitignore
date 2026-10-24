@@ -55,6 +55,7 @@ scripts/benchmark_report.md
 scripts/benchmark_results.csv
 examples/saved_runs/
 logs/
+*.log
 ppo_tensorboard/
 
 # IDE & OS files

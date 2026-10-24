@@ -70,3 +70,16 @@ def a_star_search(
                 heapq.heappush(open_heap, (f_score, tentative_g, neighbor))
 
     return []
+
+
+if __name__ == "__main__":
+    start_pos: Coord = (0, 0)
+    goal_pos: Coord = (4, 4)
+    wall: Set[Coord] = {(1, 0), (1, 1), (1, 2), (2, 2), (3, 2)}
+
+    print(f"Running A* Search: start={start_pos}, goal={goal_pos}")
+    print(f"Obstacles: {sorted(list(wall))}")
+
+    result_path = a_star_search(start_pos, goal_pos, obstacles=wall, grid_size=10)
+    print(f"Path found ({len(result_path)} steps): {result_path}")
+

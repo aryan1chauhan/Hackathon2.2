@@ -207,9 +207,15 @@ class LLMCoordinator:
     def summarize_state(self, obs: Dict[str, Any]) -> str:
         """Serializes current disaster observation into concise markdown state summary."""
         agents = obs.get("agents", [])
+        carried_ids = {
+            victim_id
+            for agent in agents
+            for victim_id in (agent.get("inventory") or ([agent.get("carrying")] if agent.get("carrying") is not None else []))
+        }
         victims = [
             v for v in obs.get("victims", [])
             if not v.get("rescued", False) and not v.get("died", False)
+            and v["id"] not in carried_ids
         ]
 
         lines = [
@@ -262,9 +268,15 @@ class LLMCoordinator:
             raise ValueError("env_or_obs must be DisasterReliefEnv or observation dict")
 
         num_agents = len(obs.get("agents", []))
+        carried_ids = {
+            victim_id
+            for agent in obs.get("agents", [])
+            for victim_id in (agent.get("inventory") or ([agent.get("carrying")] if agent.get("carrying") is not None else []))
+        }
         active_victims = [
             v for v in obs.get("victims", [])
             if not v.get("rescued", False) and not v.get("died", False)
+            and v["id"] not in carried_ids
         ]
         valid_vids: Set[int] = {v["id"] for v in active_victims}
 

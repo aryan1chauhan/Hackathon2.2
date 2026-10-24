@@ -72,9 +72,15 @@ class GreedyAgent(AgentInterface):
             return step_towards(my_pos, shelter_pos)
 
         # 2. Idle mode -> Head towards nearest active victim
+        carried_ids = {
+            victim_id
+            for other in obs.get("agents", [])
+            for victim_id in (other.get("inventory") or ([other.get("carrying")] if other.get("carrying") is not None else []))
+        }
         active_victims = [
             v for v in obs.get("victims", [])
             if not v.get("rescued", False) and not v.get("died", False)
+            and v.get("id") not in carried_ids
         ]
 
         if not active_victims:

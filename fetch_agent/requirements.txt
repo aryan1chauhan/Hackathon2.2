@@ -1,0 +1,5 @@
+# Fetch.ai ACP agent layer for AegisCoord
+# Install alongside the main project: pip install -r fetch_agent/requirements.txt
+uagents>=0.25.5
+httpx>=0.27.0
+python-dotenv>=1.0.0
