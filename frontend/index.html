@@ -1,60 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disaster LLM Coordinator Demo</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disaster LLM Coordinator | Autonomous Multi-Agent Emergency Operations</title>
+  <meta name="description" content="Hierarchical Multi-Agent Disaster Relief Simulation featuring Hungarian Combinatorial Optimization and Gemini Cognitive Coordination.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Disaster LLM Coordinator Demo</h1>
-            <div class="controls">
-                <select id="modeSelect">
-                    <option value="greedy">Greedy</option>
-                    <option value="assigned">Assigned</option>
-                    <option value="coordinated">Coordinated</option>
-                    <option value="llm">LLM</option>
-                </select>
-                <button id="startButton">Start</button>
-                <button id="pauseButton">Pause</button>
-                <button id="stepButton">Step</button>
-                <button id="resetButton">Reset</button>
+  <div class="app-container">
+    <!-- Header / Tactical Topbar -->
+    <header class="topbar">
+      <div class="brand-group">
+        <div class="brand-icon">
+          <span class="radar-dot"></span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">AegisCoord // Tactical Ops Center</h1>
+          <p class="brand-subtitle">Hierarchical Multi-Agent Disaster Response Simulation</p>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="status-badge" id="system-status-badge">
+          <span class="status-dot green" id="system-status-dot"></span>
+          <span id="system-status-text">SYSTEM READY</span>
+        </div>
+        <div class="mode-tag" id="active-mode-tag">COORDINATED (HUNGARIAN)</div>
+        <div class="step-counter">
+          <span class="step-label">CYCLE STEP</span>
+          <span class="step-number" id="kpi-step">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- KPI Metrics Ribbon -->
+    <section class="kpi-ribbon" aria-label="Key Performance Indicators">
+      <div class="kpi-card rescued" id="kpi-card-rescued">
+        <div class="kpi-content">
+          <span class="kpi-title">Total Rescued</span>
+          <span class="kpi-value" id="kpi-rescued">0</span>
+        </div>
+        <div class="kpi-trend positive" id="kpi-trend-rescued">+0 new</div>
+      </div>
+
+      <div class="kpi-card casualties" id="kpi-card-casualties">
+        <div class="kpi-content">
+          <span class="kpi-title">Casualties (Expired)</span>
+          <span class="kpi-value" id="kpi-casualties">0</span>
+        </div>
+        <div class="kpi-trend neutral" id="kpi-trend-casualties">0 loss</div>
+      </div>
+
+      <div class="kpi-card active-victims" id="kpi-card-active">
+        <div class="kpi-content">
+          <span class="kpi-title">Active Victims</span>
+          <span class="kpi-value" id="kpi-active">0</span>
+        </div>
+        <div class="kpi-subtext" id="kpi-sub-active">In field</div>
+      </div>
+
+      <div class="kpi-card wait-time" id="kpi-card-wait">
+        <div class="kpi-content">
+          <span class="kpi-title">Avg Wait Time</span>
+          <span class="kpi-value" id="kpi-wait">0.0<span class="kpi-unit">s</span></span>
+        </div>
+        <div class="kpi-subtext">Rescued cohort</div>
+      </div>
+
+      <div class="kpi-card fairness" id="kpi-card-fairness">
+        <div class="kpi-content">
+          <span class="kpi-title">Jain's Fairness (J)</span>
+          <span class="kpi-value" id="kpi-fairness">1.0000</span>
+        </div>
+        <div class="fairness-bar-bg">
+          <div class="fairness-bar-fill" id="fairness-bar" style="width: 100%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Operations Workspace -->
+    <main class="ops-workspace">
+      <!-- Left / Center: 10x10 Grid Viewport -->
+      <section class="grid-section">
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <h2 class="panel-title">Spatial Sector Grid (10 × 10)</h2>
+            <span class="grid-meta" id="grid-meta-info">100 Discrete Grid Coordinates</span>
+          </div>
+          <div class="grid-actions">
+            <span class="badge" id="zoom-info">Discrete Manhattan Metric</span>
+          </div>
+        </div>
+
+        <div class="grid-outer-wrapper">
+          <!-- X Axis Labels (0-9) -->
+          <div class="axis-x-labels">
+            <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+          </div>
+
+          <div class="grid-middle-wrapper">
+            <!-- Y Axis Labels (0-9) -->
+            <div class="axis-y-labels">
+              <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
             </div>
-        </header>
-        <main>
-            <div class="grid-panel">
-                <h2>Simulation Grid</h2>
-                <div id="simulationGrid" class="grid"></div>
+
+            <!-- The 100 Grid Cells -->
+            <div class="grid-container" id="grid-container" role="grid" aria-label="Disaster 10x10 Grid">
+              <!-- Dynamically populated by script.js -->
             </div>
-            <div class="info-panels">
-                <div class="metrics-panel">
-                    <h2>Metrics</h2>
-                    <div class="metric">
-                        <label>Throughput:</label>
-                        <span id="throughput">0</span>
-                    </div>
-                    <div class="metric">
-                        <label>Avg Wait Time:</label>
-                        <span id="avgWaitTime">0</span>
-                    </div>
-                    <div class="metric">
-                        <label>Fairness (Jain Index):</label>
-                        <span id="fairness">0</span>
-                    </div>
-                    <div class="metric">
-                        <label>Step:</label>
-                        <span id="currentStep">0</span>
-                    </div>
-                </div>
-                <div class="log-panel">
-                    <h2>Logs</h2>
-                    <div id="logOutput" class="log-output"></div>
-                </div>
+          </div>
+        </div>
+
+        <!-- Legend Ribbon -->
+        <div class="grid-legend">
+          <div class="legend-item"><span class="legend-swatch shelter"></span> Shelter (H)</div>
+          <div class="legend-item"><span class="legend-swatch depot"></span> Supply Depot (D)</div>
+          <div class="legend-item"><span class="legend-swatch obstacle"></span> Debris Obstacle</div>
+          <div class="legend-item"><span class="legend-swatch agent"></span> Relief Agent (A)</div>
+          <div class="legend-item"><span class="legend-swatch v-stable"></span> Stable Victim</div>
+          <div class="legend-item"><span class="legend-swatch v-serious"></span> Serious Victim</div>
+          <div class="legend-item"><span class="legend-swatch v-critical"></span> Critical Victim</div>
+        </div>
+      </section>
+
+      <!-- Right Column: Command Deck, Telemetry, and Console -->
+      <aside class="sidebar-section">
+        <!-- Control Deck Panel -->
+        <div class="control-panel panel-card">
+          <h3 class="card-title">Coordination Command Deck</h3>
+
+          <div class="mode-select-group">
+            <label class="control-label">COORDINATION STRATEGY</label>
+            <div class="mode-buttons" role="radiogroup" aria-label="Coordination Mode">
+              <button type="button" class="mode-btn active" id="btn-mode-coordinated" data-mode="coordinated">
+                <span class="mode-btn-dot"></span>
+                <span>Coordinated (Hungarian)</span>
+              </button>
+              <button type="button" class="mode-btn" id="btn-mode-greedy" data-mode="greedy">
+                <span class="mode-btn-dot"></span>
+                <span>Decentralized (Greedy)</span>
+              </button>
+              <button type="button" class="mode-btn" id="btn-mode-llm" data-mode="llm">
+                <span class="mode-btn-dot"></span>
+                <span>LLM Cognitive (Gemini)</span>
+              </button>
             </div>
-        </main>
-    </div>
-    <script src="script.js"></script>
+          </div>
+
+          <div class="control-actions-row">
+            <button type="button" class="btn btn-primary" id="btn-play-pause">
+              <span id="btn-play-icon">▶</span>
+              <span id="btn-play-label">Start Auto-Run</span>
+            </button>
+            <button type="button" class="btn btn-secondary" id="btn-step">
+              <span>⏭</span> Step 1x
+            </button>
+            <button type="button" class="btn btn-outline" id="btn-reset">
+              <span>↺</span> Reset
+            </button>
+          </div>
+
+          <div class="control-sliders-row">
+            <div class="slider-field">
+              <div class="slider-header">
+                <label for="speed-slider" class="control-label">SIMULATION SPEED</label>
+                <span class="slider-value" id="speed-label">350ms</span>
+              </div>
+              <input type="range" id="speed-slider" min="100" max="1500" step="50" value="350">
+            </div>
+
+            <div class="seed-field">
+              <label for="seed-input" class="control-label">RANDOM SEED</label>
+              <div class="seed-input-group">
+                <input type="number" id="seed-input" min="1" max="999999" value="42">
+                <button type="button" class="btn-seed-random" id="btn-seed-random" title="Randomize Seed">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fleet Telemetry Panel -->
+        <div class="telemetry-panel panel-card">
+          <div class="card-header-row">
+            <h3 class="card-title">Fleet Telemetry</h3>
+            <span class="badge" id="fleet-count-badge">3 Agents Active</span>
+          </div>
+
+          <div class="agent-roster" id="agent-roster">
+            <!-- Dynamically populated by script.js -->
+          </div>
+        </div>
+
+        <!-- Incident & Activity Stream Console -->
+        <div class="console-panel panel-card">
+          <div class="card-header-row">
+            <h3 class="card-title">Incident & Activity Stream</h3>
+            <button type="button" class="btn-clear-log" id="btn-clear-log">Clear</button>
+          </div>
+          <div class="console-body" id="console-stream" role="log" aria-live="polite">
+            <div class="log-entry system">
+              <span class="log-time">[00:00:00]</span>
+              <span class="log-tag tag-system">SYSTEM</span>
+              <span class="log-msg">Tactical Operations Center connected to API Gateway.</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

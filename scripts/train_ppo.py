@@ -1,69 +1,68 @@
-#!/usr/bin/env python3
 """
-Training script for PPO agents in the disaster relief environment.
-Trains separate models for each agent or a shared model.
+PPO Policy Training Pipeline for Multi-Agent Disaster Relief using Stable-Baselines3.
+Trains a neural policy mapping spatial vector observations to joint agent action vectors.
 """
 
 import os
 import sys
 import argparse
-from stable_baselines3 import PPO
-from stable_baselines3.common.callbacks import EvalCallback
 
-# Add parent directory to path to import agents module
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from agents.rl_utils import DisasterReliefGymWrapper
+# Ensure local module priority
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from agents.rl_utils import DisasterGymWrapper
 
 
-def train_ppo_agent(agent_id: int = 0, total_timesteps: int = 100000, model_dir: str = "models"):
-    """
-    Train a PPO model for a specific agent.
-    """
-    os.makedirs(model_dir, exist_ok=True)
+def train_ppo(timesteps: int = 2000, model_save_path: str = "models/ppo_agent.zip"):
+    print("=" * 65)
+    print("AEGISCOORD // PPO REINFORCEMENT LEARNING BASELINE")
+    print(f"Target Timesteps: {timesteps} | Save Path: {model_save_path}")
+    print("=" * 65)
 
-    # Create environment
-    env = DisasterReliefGymWrapper()
-    eval_env = DisasterReliefGymWrapper()
+    try:
+        from stable_baselines3 import PPO
+    except ImportError:
+        print("[ERROR] stable_baselines3 is not installed. Run: pip install stable-baselines3")
+        return
 
-    # PPO model
+    env = DisasterGymWrapper(grid_size=10, num_agents=3, max_victims=6, seed=42)
+
+    # Multi-Input / MLP policy for discrete multi-agent actions
     model = PPO(
         "MlpPolicy",
         env,
-        verbose=1,
-        tensorboard_log=f"./ppo_tensorboard/",
         learning_rate=3e-4,
-        n_steps=2048,
+        n_steps=128,
         batch_size=64,
-        n_epochs=10,
+        n_epochs=4,
         gamma=0.99,
-        gae_lambda=0.95,
-        clip_range=0.2,
-        ent_coef=0.0,
+        verbose=1,
     )
 
-    # Evaluation callback
-    eval_callback = EvalCallback(
-        eval_env,
-        best_model_save_path=f"{model_dir}/best_ppo_agent_{agent_id}/",
-        log_path=f"./logs/",
-        eval_freq=10000,
-        deterministic=True,
-        render=False,
-    )
+    print("\nStarting PPO optimization...")
+    model.learn(total_timesteps=timesteps)
 
-    # Train
-    model.learn(total_timesteps=total_timesteps, callback=eval_callback)
+    os.makedirs(os.path.dirname(os.path.abspath(model_save_path)), exist_ok=True)
+    model.save(model_save_path)
+    print(f"\n[SUCCESS] Model successfully trained and saved to {model_save_path}")
 
-    # Save final model
-    model.save(f"{model_dir}/ppo_agent_{agent_id}.zip")
-    print(f"Model saved to {model_dir}/ppo_agent_{agent_id}.zip")
+    # Evaluate 1 test episode
+    obs, info = env.reset(seed=123)
+    total_reward = 0.0
+    for step in range(30):
+        action, _states = model.predict(obs, deterministic=True)
+        obs, reward, terminated, truncated, info = env.step(action)
+        total_reward += reward
+        if terminated or truncated:
+            break
+
+    print(f"Evaluation Test Episode Finished | Total Reward: {total_reward:.2f} | Rescued: {env.env.total_rescued} | Casualties: {env.env.total_died}")
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Train PPO agent for disaster relief")
-    parser.add_argument("--agent_id", type=int, default=0, help="Agent ID to train")
-    parser.add_argument("--timesteps", type=int, default=100000, help="Total training timesteps")
-    parser.add_argument("--model_dir", type=str, default="models", help="Directory to save models")
-
+    parser = argparse.ArgumentParser(description="PPO Training Pipeline")
+    parser.add_argument("--timesteps", type=int, default=1500)
+    parser.add_argument("--save-path", type=str, default="models/ppo_agent.zip")
     args = parser.parse_args()
-    train_ppo_agent(args.agent_id, args.timesteps, args.model_dir)
+
+    train_ppo(timesteps=args.timesteps, model_save_path=args.save_path)

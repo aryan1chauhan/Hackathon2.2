@@ -1,136 +1,152 @@
+"""
+Headless Episode Runner & Trace Exporter for Disaster Multi-Agent Simulations.
+Executes episodes across greedy, coordinated (Hungarian), and LLM modes,
+exporting execution traces and summary analytics.
+"""
+
 import os
 import sys
 import json
-from datetime import datetime
+import time
+import argparse
+from typing import Dict, Any, List, Optional
 
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# Ensure local module priority
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from env import DisasterReliefEnv
-from agents import GreedyAgent, MultiAgentController, TaskExecutor, PPOAgent
-from coordinator import SimpleCoordinator
+from agents import GreedyAgent, TaskExecutor, MultiAgentController
+from backend.coordinator.simple_coordinator import SimpleCoordinator
 from coordinator.llm_coordinator import LLMCoordinator
 
 
-def run_experiment(mode: str = 'greedy', max_steps: int = 200, save_dir: str = 'examples/saved_runs', seed: int | None = None, urgency_weight: float = 4.0, llm_client=None, validator=None, model_dir: str = 'models'):
-    os.makedirs(save_dir, exist_ok=True)
-    env = DisasterReliefEnv(seed=seed)
-    env.reset()
+def run_episode(
+    mode: str = "coordinated",
+    steps: int = 40,
+    seed: int = 42,
+    grid_size: int = 10,
+    num_agents: int = 3,
+    num_victims: int = 8,
+    num_obstacles: int = 12,
+    export_path: Optional[str] = None,
+    verbose: bool = True,
+) -> Dict[str, Any]:
+    """
+    Executes a complete headless simulation episode and returns trace and metrics.
+    """
+    env = DisasterReliefEnv(
+        grid_size=grid_size,
+        num_agents=num_agents,
+        max_victims=num_victims,
+        seed=seed,
+    )
+    obs = env.reset()
 
-    coordinator = None
-    if mode == 'greedy':
-        agents = [GreedyAgent(agent_id=i) for i in range(env.num_agents)]
-        controller = MultiAgentController(agents)
-    elif mode == 'ppo':
-        agents = [PPOAgent(agent_id=i, model_path=os.path.join(model_dir, f'ppo_agent_{i}.zip')) for i in range(env.num_agents)]
-        controller = MultiAgentController(agents)
-    elif mode == 'assigned':
-        controller = TaskExecutor(num_agents=env.num_agents)
-        if env.victims:
-            controller.set_assignment(0, f'rescue V{env.victims[0].id}')
-    elif mode == 'coordinated':
-        if llm_client is None or validator is None:
-            raise ValueError("LLM client and validator must be provided for 'coordinated' mode")
-        controller = TaskExecutor(num_agents=env.num_agents)
-        coordinator = LLMCoordinator(llm_client=llm_client, validator=validator)
-    elif mode == 'ppo_coordinated':
-        if llm_client is None or validator is None:
-            raise ValueError("LLM client and validator must be provided for 'ppo_coordinated' mode")
-        # Use PPO agents but with LLM coordinator for assignments
-        agents = [PPOAgent(agent_id=i, model_path=os.path.join(model_dir, f'ppo_agent_{i}.zip')) for i in range(env.num_agents)]
-        controller = MultiAgentController(agents)
-        coordinator = LLMCoordinator(llm_client=llm_client, validator=validator)
-        # Note: For ppo_coordinated, the coordinator assigns tasks, but PPO agents decide actions autonomously
-        # This might need adjustment in LLMCoordinator to work with PPO agents
+    mode = mode.lower()
+    if mode == "greedy":
+        controller = MultiAgentController([GreedyAgent(i) for i in range(num_agents)])
+        coordinator = None
+        executor = None
+    elif mode == "coordinated":
+        controller = None
+        coordinator = SimpleCoordinator(assign_interval=1, urgency_weight=4.0)
+        executor = TaskExecutor(num_agents=num_agents)
+    elif mode == "llm":
+        controller = None
+        coordinator = LLMCoordinator()
+        executor = TaskExecutor(num_agents=num_agents)
     else:
-        raise ValueError('unknown mode')
+        raise ValueError(f"Unknown mode: {mode}. Must be 'greedy', 'coordinated', or 'llm'.")
 
-    trace = {
-        'started_at': datetime.utcnow().isoformat() + 'Z',
-        'mode': mode,
-        'steps': []
-    }
+    trace: List[Dict[str, Any]] = []
+    start_time = time.time()
 
-    for step_idx in range(max_steps):
+    for s in range(steps):
         obs = env.get_observation()
+        assignments = {}
 
-        # If coordinated, ask coordinator for assignments and apply to TaskExecutor
-        if coordinator is not None and mode in ['coordinated', 'ppo_coordinated']:
-            assigns = coordinator.assign(env, obs)
-            if mode == 'coordinated':
-                for aid, a in assigns.items():
-                    if a is not None:
-                        controller.set_assignment(int(aid), a)
-            # For ppo_coordinated, assignments are just for logging, PPO acts autonomously
+        if mode == "greedy":
+            actions = controller.act(obs)
+            assignments = {str(i): "greedy_nearest" for i in range(num_agents)}
+        else:
+            raw_assignments = coordinator.assign(obs, step=s)
+            for aid_key, task in raw_assignments.items():
+                aid = int(aid_key)
+                assignments[str(aid)] = task
+                if task is not None and executor._targets[aid] is None:
+                    executor.set_assignment(aid, task)
+            actions = executor.act(obs)
 
-        actions = controller.act(obs)
-        obs, rewards, done, info = env.step(actions)
+        next_obs, rewards, done, info = env.step(actions)
 
-        trace['steps'].append({
-            'step': info['step'],
-            'actions': actions,
-            'info': info
-        })
+        step_record = {
+            "step": s,
+            "actions": [int(a) for a in actions],
+            "assignments": assignments,
+            "total_rescued": int(env.total_rescued),
+            "total_died": int(env.total_died),
+            "active_victims": len([v for v in env.victims if not v.rescued and not v.died]),
+        }
+        trace.append(step_record)
 
-        if done:
-            break
+        if verbose and (s % 10 == 0 or s == steps - 1):
+            print(
+                f"[Step {s:02d}/{steps}] Rescued: {env.total_rescued} | "
+                f"Casualties: {env.total_died} | "
+                f"Active: {step_record['active_victims']}"
+            )
 
-    trace['ended_at'] = datetime.utcnow().isoformat() + 'Z'
-    trace['summary'] = {
-        'total_spawned': env.total_spawned,
-        'total_rescued': env.total_rescued,
-        'total_died': env.total_died,
-        'steps': env.current_step,
-        'avg_wait_time': sum(env.rescued_wait_times) / len(env.rescued_wait_times) if env.rescued_wait_times else 0,
-        'agent_workloads': env.agent_workloads,
-        'episode_rewards': env.episode_rewards
+    elapsed = time.time() - start_time
+
+    rescued_victims = [v for v in env.victims if v.rescued]
+    avg_wait = float(sum(v.wait_time for v in rescued_victims) / len(rescued_victims)) if rescued_victims else 0.0
+
+    # Jain's fairness index across agent rescues
+    rescues = [float(a.total_rescues) for a in env.agents]
+    total_r = sum(rescues)
+    if total_r == 0:
+        fairness = 1.0
+    else:
+        n = len(rescues)
+        fairness = float((total_r ** 2) / (n * sum(r * r for r in rescues)))
+
+    summary = {
+        "mode": mode,
+        "seed": seed,
+        "steps": steps,
+        "total_rescued": int(env.total_rescued),
+        "total_died": int(env.total_died),
+        "avg_wait_time": round(avg_wait, 2),
+        "fairness_index": round(fairness, 4),
+        "agent_rescues": [int(a.total_rescues) for a in env.agents],
+        "agent_moves": [int(a.total_moves) for a in env.agents],
+        "elapsed_seconds": round(elapsed, 4),
     }
 
-    # Add coordinator metrics if available
-    if coordinator is not None and hasattr(coordinator, 'successful_decisions'):
-        trace['summary']['llm_success_rate'] = coordinator.successful_decisions / coordinator.total_decisions if coordinator.total_decisions > 0 else 0
-        trace['summary']['fallback_count'] = coordinator.fallback_count
+    if export_path:
+        os.makedirs(os.path.dirname(os.path.abspath(export_path)), exist_ok=True)
+        with open(export_path, "w", encoding="utf-8") as f:
+            json.dump({"summary": summary, "trace": trace}, f, indent=2)
+        if verbose:
+            print(f"Trace saved to {export_path}")
 
-    ts = datetime.now().strftime('%Y%m%d_%H%M%S')
-    fname = os.path.join(save_dir, f'backend_run_{mode}_{ts}.json')
-    with open(fname, 'w', encoding='utf-8') as f:
-        json.dump(trace, f, indent=2)
+    return {"summary": summary, "trace": trace}
 
-    return fname, trace
 
-def dummy_llm_client(prompt):
-    # This is a placeholder for an actual LLM client
-    # In a real scenario, this would interact with an LLM API
-    print(f"LLM Prompt: {prompt[:100]}...")
-    # Return a dummy assignment for now
-    return '{"0": "wait", "1": "wait"}'
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Headless Episode Runner")
+    parser.add_argument("--mode", type=str, default="coordinated", choices=["greedy", "coordinated", "llm"])
+    parser.add_argument("--steps", type=int, default=40)
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--export", type=str, default=None)
+    args = parser.parse_args()
 
-def dummy_validator(llm_response, num_agents):
-    # This is a placeholder for a real validator
-    # It should parse the LLM response and ensure it's valid
-    try:
-        assignments = json.loads(llm_response)
-        if not isinstance(assignments, dict):
-            raise ValueError('Assignments must be a dict')
-        for i in range(num_agents):
-            if str(i) not in assignments:
-                assignments[str(i)] = 'wait'
-        return assignments
-    except Exception as e:
-        raise ValueError(f'Invalid LLM output: {e}')
-
-if __name__ == '__main__':
-    # Example of running greedy
-    fname_greedy, trace_greedy = run_experiment('greedy', max_steps=200, seed=0)
-    print('Saved greedy run to', fname_greedy)
-
-    # Example of running PPO (assuming models are trained)
-    try:
-        fname_ppo, trace_ppo = run_experiment('ppo', max_steps=200, seed=0)
-        print('Saved PPO run to', fname_ppo)
-    except FileNotFoundError as e:
-        print(f"PPO models not found: {e}. Train models first using scripts/train_ppo.py")
-
-    # Example of running coordinated with LLM
-    # For a real LLM, you would pass an actual client and validator
-    fname_llm, trace_llm = run_experiment('coordinated', max_steps=200, seed=0, llm_client=dummy_llm_client, validator=dummy_validator)
-    print('Saved LLM coordinated run to', fname_llm)
+    result = run_episode(
+        mode=args.mode,
+        steps=args.steps,
+        seed=args.seed,
+        export_path=args.export,
+        verbose=True,
+    )
+    print("\nSimulation Finished:")
+    print(json.dumps(result["summary"], indent=2))

@@ -1,32 +1,32 @@
 # Disaster LLM Coordinator
 
-A multi-agent simulation for disaster relief coordination using Large Language Models (LLMs) to optimize agent assignments and improve response efficiency.
+A multi-agent simulation framework for disaster relief coordination, resource allocation, and LLM-assisted multi-agent operations.
 
 ## Features
 
-- **Multi-Agent Simulation**: Agents navigate a grid-based environment to rescue victims and deliver supplies.
+- **Multi-Agent Simulation**: Autonomous search-and-rescue agents navigate a dynamic 2D grid to locate victims, provide immediate triage, and transport casualties to safety depots.
 - **Multiple Coordination Modes**:
-  - **Greedy**: Agents act independently based on local heuristics.
-  - **Assigned**: Pre-assigned tasks for agents.
-  - **Coordinated**: Simple rule-based coordinator assigns tasks.
-  - **LLM**: Uses LLM for intelligent task assignment and coordination.
-- **Real-time Visualization**: Web-based frontend for monitoring simulation progress.
-- **Performance Metrics**: Tracks throughput, fairness, and wait times.
-- **Extensible Architecture**: Modular design for adding new agents, coordinators, and environments.
+  - **Greedy**: Fully decentralized heuristics where each agent targets the nearest victim.
+  - **Assigned**: Static partition/assignment for agents.
+  - **Coordinated**: Centralized global coordination utilizing Hungarian minimum-cost bipartite matching with distance and urgency balancing.
+  - **LLM**: Gemini LLM-driven strategic coordination with JSON validation, fallback circuit-breaking, and prompt-engineered dynamic task allocation.
+  - **PPO Reinforcement Learning**: Trained fleet policies using Stable-Baselines3 Gymnasium environment wrapper.
+- **Tactical Web Dashboard**: Real-time interactive browser interface with live grid visualizer, mode switching, telemetry, and metrics charts.
+- **Fairness & Throughput Analytics**: Live tracking of victim survival rate, average wait time, and Jain's Fairness Index across agent workloads.
+- **Resilient Architecture**: Collision-free pathfinding, dynamic obstacle avoidance, and edge case recovery.
 
-## Setup
+## Prerequisites & Setup
 
-### Prerequisites
-
-- Python 3.8+
+### Requirements
+- Python 3.10+ (tested on Python 3.12/3.13)
 - pip
 
 ### Installation
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd disaster_llm_coordinator
+   git clone https://github.com/aryan1chauhan/Hackathon2.2.git
+   cd Hackathon2.2
    ```
 
 2. Install dependencies:
@@ -34,84 +34,92 @@ A multi-agent simulation for disaster relief coordination using Large Language M
    pip install -r requirements.txt
    ```
 
-3. (Optional) Set up LLM client for LLM mode:
-   - Configure your LLM API key in the coordinator configuration.
+3. (Optional) Set up Gemini API Key for LLM mode:
+   Create a `.env` file in the root directory (or export to your environment):
+   ```bash
+   GEMINI_API_KEY=your_gemini_api_key_here
+   ```
 
-## Running the Simulation
+## Quickstart & Usage
 
-### Command Line Demo
-
-Run a single episode from the command line:
-
-```bash
-python run_demo.py --mode greedy --steps 200 --seed 42
-```
-
-Available modes: `greedy`, `assigned`, `coordinated`, `llm`
-
-### Web Interface
-
-Start the backend server:
-
+### 1. Interactive Tactical Web Visualizer
+Start the FastAPI server:
 ```bash
 python backend/api.py
 ```
+Open **`http://localhost:8000/frontend/index.html`** in your browser to run live interactive simulations.
 
-Open your browser to `http://localhost:8000/frontend/index.html` to view the real-time simulation.
-
-### Training PPO Agent
-
-Train a PPO agent for improved performance:
-
+### 2. Headless Simulation CLI
+Run a command-line simulation episode:
 ```bash
-python scripts/train_ppo.py
+python run_demo.py --mode coordinated --steps 40 --seed 42
 ```
+Available modes: `greedy`, `assigned`, `coordinated`, `llm`
 
-### Comparing Modes
+Launcher scripts are also available:
+- Windows: `run_demo.bat --mode coordinated --steps 40`
+- Linux/macOS: `./run_demo.sh --mode coordinated --steps 40`
 
-Compare performance across different coordination modes:
-
+### 3. Multi-Episode Comparative Benchmark
+Benchmark and compare all coordination modes across multiple seeds:
 ```bash
 python scripts/compare_modes.py
 ```
 
-## API Endpoints
+### 4. Reinforcement Learning Training (PPO)
+Train the PPO multi-agent policy:
+```bash
+python scripts/train_ppo.py --timesteps 10000
+```
+Trained model weights are saved to `models/ppo_agent.zip`.
 
-- `POST /reset`: Reset the simulation with optional mode and seed.
-- `POST /step`: Advance the simulation by one step.
-- `GET /state`: Get current simulation state.
-- `GET /metrics`: Get performance metrics.
-- `WebSocket /ws`: Real-time updates.
+### 5. Running the Test Suite
+Run the comprehensive verification suite:
+```bash
+python tests/run_tests.py
+```
+Or with pytest:
+```bash
+pytest tests/ -v
+```
 
 ## Project Structure
 
 ```
-disaster_llm_coordinator/
-├── env/                    # Simulation environment
-├── agents/                 # Agent implementations
-├── coordinator/            # Coordination logic
-├── backend/                # FastAPI backend
-├── frontend/               # Web interface
-├── scripts/                # Training and comparison scripts
-├── tests/                  # Unit tests
-├── examples/               # Saved runs and analysis
-└── README.md
+Hackathon2.2/
+├── agents/                 # Autonomous agent implementations (Greedy, PPO, Executor)
+│   ├── agent_interface.py  # Base agent abstract interface
+│   ├── greedy_agent.py     # Local nearest-neighbor heuristic agent
+│   ├── ppo_agent.py        # Stable-Baselines3 PPO RL agent
+│   ├── pathfinding.py      # Collision-free grid navigation
+│   └── simple_executor.py  # Discrete task executor for coordinator commands
+├── backend/                # FastAPI backend & runner
+│   ├── api.py              # REST API endpoints & WebSocket streamer
+│   ├── runner.py           # Simulation execution runner
+│   └── coordinator/        # Coordinator integration service
+├── coordinator/            # Central multi-agent coordinators
+│   └── llm_coordinator.py  # Hungarian matching & Gemini LLM coordinator
+├── env/                    # Disaster simulation environment
+│   ├── disaster_env.py     # Grid world dynamics, triage, & physics
+│   ├── constants.py        # Environment parameters & configurations
+│   └── spawn_policies.py   # Victim & obstacle spawning policies
+├── frontend/               # Interactive tactical web interface
+│   ├── index.html          # Dashboard UI structure
+│   ├── style.css           # Styling & tactical grid visualization
+│   └── script.js           # API polling, controls, & Canvas rendering
+├── models/                 # Pretrained RL models (ppo_agent.zip)
+├── scripts/                # Benchmark & training utilities
+├── tests/                  # Full verification & edge-case test suite
+└── requirements.txt        # Project dependencies
 ```
 
-## Screenshots
+## API Endpoints
 
-*(Screenshots will be added after capturing from the running frontend)*
-
-- Simulation Grid: Real-time visualization of agents (blue circles), victims (red circles), and depots (blue squares) on the grid.
-- Metrics Dashboard: Performance metrics including throughput (total rescued), average wait time, fairness (Jain Index), and current step.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+- `POST /reset`: Initialize simulation with selected mode, grid size, and seed.
+- `POST /step`: Advance simulation by one tick and return updated state.
+- `GET /state`: Fetch current agent positions, victims, and environment grid.
+- `GET /metrics`: Fetch performance metrics (rescues, casualties, fairness index).
+- `WebSocket /ws`: Real-time streaming simulation channel.
 
 ## License
 

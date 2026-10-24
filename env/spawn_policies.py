@@ -1,122 +1,72 @@
+"""
+Victim and hazard spawn policies for the Disaster Relief Environment.
+"""
+
 import random
-from typing import Tuple, Optional
-from env.constants import Severity
+from typing import List, Tuple, Optional
+from env.constants import Severity, DEFAULT_MAX_WAITS
 
 
 class SpawnPolicy:
-    """Base class for victim spawning policies"""
-    
-    def should_spawn(self, current_step: int, active_victims: int, max_victims: int) -> bool:
-        """Determine if a victim should spawn this step"""
+    """Abstract base spawn policy."""
+
+    def spawn(self, env) -> List[Tuple[int, int]]:
         raise NotImplementedError
-    
-    def get_spawn_params(self, current_step: int) -> Tuple[Severity, int]:
-        """Get severity and max_wait for new victim"""
-        raise NotImplementedError
+
+
+class DefaultSpawnPolicy(SpawnPolicy):
+    """
+    Standard policy: maintains an active victim count up to max_victims.
+    """
+
+    def __init__(self, spawn_probability: float = 0.2):
+        self.spawn_probability = spawn_probability
+
+    def spawn(self, env) -> List[Tuple[int, int]]:
+        active_victims = [v for v in env.victims if not v.rescued and not v.died]
+        if len(active_victims) >= env.max_victims:
+            return []
+
+        # If below target count, roll probability to spawn a new victim
+        if random.random() < self.spawn_probability or len(active_victims) == 0:
+            pos = env.get_random_empty_cell()
+            if pos is not None:
+                return [pos]
+        return []
 
 
 class RandomSpawnPolicy(SpawnPolicy):
-    """Random victim spawning with configurable rate"""
-    
-    def __init__(self, spawn_rate: float = 0.15, seed: Optional[int] = None):
+    """
+    Uniform random spawn policy.
+    """
+
+    def __init__(self, spawn_rate: float = 0.3):
         self.spawn_rate = spawn_rate
-        self._random = random.Random(seed)
-    
-    def should_spawn(self, current_step: int, active_victims: int, max_victims: int) -> bool:
-        if active_victims >= max_victims:
-            return False
-        return self._random.random() < self.spawn_rate
-    
-    def get_spawn_params(self, current_step: int) -> Tuple[Severity, int]:
-        """Random severity with weighted probabilities"""
-        severity_roll = self._random.random()
-        if severity_roll < 0.3:
-            severity = Severity.CRITICAL
-            max_wait = self._random.randint(40, 60)
-        elif severity_roll < 0.6:
-            severity = Severity.SERIOUS
-            max_wait = self._random.randint(70, 90)
-        else:
-            severity = Severity.STABLE
-            max_wait = self._random.randint(100, 140)
-        
-        return severity, max_wait
+
+    def spawn(self, env) -> List[Tuple[int, int]]:
+        active = [v for v in env.victims if not v.rescued and not v.died]
+        if len(active) < env.max_victims and random.random() < self.spawn_rate:
+            pos = env.get_random_empty_cell()
+            if pos:
+                return [pos]
+        return []
 
 
 class BurstSpawnPolicy(SpawnPolicy):
     """
-    Simulates disaster waves - periods of high victim spawning.
-    Useful for testing agent coordination under stress.
+    Simulates acute crisis waves at specific intervals.
     """
-    
-    def __init__(self, burst_interval: int = 100, burst_duration: int = 20, 
-                 burst_rate: float = 0.5, normal_rate: float = 0.1):
+
+    def __init__(self, burst_interval: int = 25, burst_size: int = 3):
         self.burst_interval = burst_interval
-        self.burst_duration = burst_duration
-        self.burst_rate = burst_rate
-        self.normal_rate = normal_rate
-    
-    def should_spawn(self, current_step: int, active_victims: int, max_victims: int) -> bool:
-        if active_victims >= max_victims:
-            return False
-        
-        # Check if in burst period
-        cycle_position = current_step % self.burst_interval
-        in_burst = cycle_position < self.burst_duration
-        
-        rate = self.burst_rate if in_burst else self.normal_rate
-        return random.random() < rate
-    
-    def get_spawn_params(self, current_step: int) -> Tuple[Severity, int]:
-        # During burst, more critical victims
-        cycle_position = current_step % self.burst_interval
-        in_burst = cycle_position < self.burst_duration
-        
-        if in_burst:
-            # Higher chance of critical victims during burst
-            severity_roll = random.random()
-            if severity_roll < 0.5:
-                severity = Severity.CRITICAL
-                max_wait = random.randint(40, 60)
-            elif severity_roll < 0.8:
-                severity = Severity.SERIOUS
-                max_wait = random.randint(70, 90)
-            else:
-                severity = Severity.STABLE
-                max_wait = random.randint(100, 140)
-        else:
-            # Normal distribution
-            severity_roll = random.random()
-            if severity_roll < 0.2:
-                severity = Severity.CRITICAL
-                max_wait = random.randint(40, 60)
-            elif severity_roll < 0.5:
-                severity = Severity.SERIOUS
-                max_wait = random.randint(70, 90)
-            else:
-                severity = Severity.STABLE
-                max_wait = random.randint(100, 140)
-        
-        return severity, max_wait
+        self.burst_size = burst_size
 
-
-class ConstantSpawnPolicy(SpawnPolicy):
-    """Spawn victims at constant rate for predictable testing"""
-    
-    def __init__(self, spawn_every_n_steps: int = 10):
-        self.spawn_every_n_steps = spawn_every_n_steps
-    
-    def should_spawn(self, current_step: int, active_victims: int, max_victims: int) -> bool:
-        if active_victims >= max_victims:
-            return False
-        return current_step % self.spawn_every_n_steps == 0
-    
-    def get_spawn_params(self, current_step: int) -> Tuple[Severity, int]:
-        # Cycle through severities predictably
-        cycle = (current_step // self.spawn_every_n_steps) % 3
-        if cycle == 0:
-            return Severity.CRITICAL, 50
-        elif cycle == 1:
-            return Severity.SERIOUS, 80
-        else:
-            return Severity.STABLE, 120
+    def spawn(self, env) -> List[Tuple[int, int]]:
+        if env.step_count > 0 and env.step_count % self.burst_interval == 0:
+            spawns = []
+            for _ in range(self.burst_size):
+                pos = env.get_random_empty_cell()
+                if pos:
+                    spawns.append(pos)
+            return spawns
+        return []

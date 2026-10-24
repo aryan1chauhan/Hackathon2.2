@@ -1,81 +1,111 @@
 """
-Greedy Agent Module
-
-This module implements a greedy agent that makes decisions based on simple heuristics:
-- If carrying a victim, move to the nearest shelter and drop off.
-- If not carrying, move to the nearest victim and pick up.
+Greedy heuristic multi-agent controller for disaster relief.
 """
 
-from typing import Dict, Any, Tuple
-from env.constants import ACTION_STAY, ACTION_UP, ACTION_DOWN, ACTION_LEFT, ACTION_RIGHT, ACTION_PICKUP, ACTION_DROPOFF
+from typing import List, Dict, Any, Tuple
 from agents.agent_interface import AgentInterface
+from env.constants import (
+    ACTION_STAY,
+    ACTION_UP,
+    ACTION_DOWN,
+    ACTION_LEFT,
+    ACTION_RIGHT,
+    ACTION_PICKUP,
+    ACTION_DROPOFF,
+    STATE_CARRYING,
+)
 
 
-def _move_towards(src: Tuple[int, int], dst: Tuple[int, int]) -> int:
-    """
-    Calculate the action to move from source position towards destination.
+def manhattan_distance(p1: Tuple[int, int], p2: Tuple[int, int]) -> int:
+    """Computes Manhattan metric d(p1, p2) = |x1 - x2| + |y1 - y2|."""
+    return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
-    Args:
-        src (Tuple[int, int]): Source position (x, y).
-        dst (Tuple[int, int]): Destination position (x, y).
 
-    Returns:
-        int: Action ID for movement (ACTION_UP, ACTION_DOWN, ACTION_LEFT, ACTION_RIGHT, or ACTION_STAY).
-    """
-    sx, sy = src
-    dx, dy = dst
-    if sx < dx:
+def step_towards(src: Tuple[int, int], dst: Tuple[int, int]) -> int:
+    """Returns the single-step cardinal action that reduces distance to dst."""
+    dx = dst[0] - src[0]
+    dy = dst[1] - src[1]
+
+    if dx > 0:
         return ACTION_RIGHT
-    if sx > dx:
+    elif dx < 0:
         return ACTION_LEFT
-    if sy < dy:
+    elif dy > 0:
         return ACTION_DOWN
-    if sy > dy:
+    elif dy < 0:
         return ACTION_UP
     return ACTION_STAY
 
 
 class GreedyAgent(AgentInterface):
     """
-    A greedy agent that prioritizes immediate local optima.
-
-    The agent follows a simple strategy:
-    - If carrying a victim, navigate to the nearest shelter and drop off.
-    - If not carrying, navigate to the nearest victim and pick up.
-
-    This approach is computationally efficient but may not always lead to globally optimal solutions.
+    Autonomous decentralized heuristic agent.
+    - If carrying victim: navigates to closest shelter and unloads.
+    - If idle: navigates to closest active victim and picks up.
     """
 
-    def act(self, agent_info: Dict[str, Any], observation: Dict[str, Any]) -> int:
-        """
-        Determine the next action based on greedy heuristics.
+    def __init__(self, agent_id: int):
+        self.agent_id = agent_id
 
-        Args:
-            agent_info (Dict[str, Any]): Information about the agent's current state.
-            observation (Dict[str, Any]): Global observation of the environment.
+    def act(self, agent_info: Dict[str, Any], obs: Dict[str, Any]) -> int:
+        my_pos = tuple(agent_info["pos"])
+        is_carrying = (
+            agent_info.get("carrying") is not None
+            or agent_info.get("state") == STATE_CARRYING
+        )
 
-        Returns:
-            int: Action ID to perform.
-        """
-        apos = tuple(agent_info['pos'])
-        carrying = agent_info['carrying']
-        shelters = observation['shelters']
-        victims = observation['victims']
+        # 1. Carrying mode -> Head towards nearest shelter
+        if is_carrying:
+            shelters = obs.get("shelters", [])
+            if not shelters:
+                return ACTION_STAY
 
-        if carrying is not None:
-            # If at shelter, drop off
-            if apos in shelters:
+            # Find closest shelter
+            nearest_shelter = min(
+                shelters,
+                key=lambda s: manhattan_distance(my_pos, tuple(s["pos"] if isinstance(s, dict) else s)),
+            )
+            shelter_pos = tuple(nearest_shelter["pos"] if isinstance(nearest_shelter, dict) else nearest_shelter)
+
+            if my_pos == shelter_pos:
                 return ACTION_DROPOFF
-            # Move to nearest shelter
-            nearest = min(shelters, key=lambda s: abs(s[0] - apos[0]) + abs(s[1] - apos[1]))
-            return _move_towards(apos, tuple(nearest))
+            return step_towards(my_pos, shelter_pos)
 
-        # Not carrying
-        if not victims:
+        # 2. Idle mode -> Head towards nearest active victim
+        active_victims = [
+            v for v in obs.get("victims", [])
+            if not v.get("rescued", False) and not v.get("died", False)
+        ]
+
+        if not active_victims:
             return ACTION_STAY
 
-        victims_pos = [tuple(v['pos']) for v in victims]
-        nearest_v = min(victims_pos, key=lambda p: abs(p[0] - apos[0]) + abs(p[1] - apos[1]))
-        if apos == nearest_v:
+        # Find nearest victim (tie-breaker: highest urgency)
+        target_victim = min(
+            active_victims,
+            key=lambda v: (
+                manhattan_distance(my_pos, tuple(v["pos"])),
+                -float(v.get("urgency", 0.0)),
+            ),
+        )
+        target_pos = tuple(target_victim["pos"])
+
+        if my_pos == target_pos:
             return ACTION_PICKUP
-        return _move_towards(apos, nearest_v)
+
+        return step_towards(my_pos, target_pos)
+
+
+class MultiAgentController:
+    """Wraps a list of AgentInterface agents into a unified joint controller."""
+
+    def __init__(self, agents: List[AgentInterface]):
+        self.agents = agents
+
+    def act(self, obs: Dict[str, Any]) -> List[int]:
+        actions = []
+        agent_infos = obs.get("agents", [])
+        for i, agent in enumerate(self.agents):
+            agent_info = agent_infos[i] if i < len(agent_infos) else {"pos": (0, 0), "carrying": None}
+            actions.append(agent.act(agent_info, obs))
+        return actions

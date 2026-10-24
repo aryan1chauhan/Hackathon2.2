@@ -1,184 +1,242 @@
 """
-Simple Executor Module
-
-This module provides controllers for managing multiple agents and executing high-level task assignments.
-It includes a MultiAgentController for independent agents and a TaskExecutor for coordinated task execution.
+Declarative Task Executor and State-Machine Controller for Coordinated Agents.
 """
 
-from typing import List, Sequence, Optional, Dict, Any
-from agents.agent_interface import AgentInterface
-
-
-class MultiAgentController:
-    """
-    Controller that manages multiple independent AgentInterface instances.
-
-    This controller holds a list of agents and delegates action selection to each agent
-    based on their individual observations and states.
-
-    Attributes:
-        agents (List[AgentInterface]): List of agent instances.
-    """
-
-    def __init__(self, agents: Sequence[AgentInterface]):
-        """
-        Initialize the controller with a sequence of agents.
-
-        Args:
-            agents (Sequence[AgentInterface]): Sequence of agent instances to control.
-        """
-        self.agents = list(agents)
-
-    def act(self, observation: Dict[str, Any]) -> List[int]:
-        """
-        Get actions from all agents for the current observation.
-
-        Args:
-            observation (Dict[str, Any]): Global observation of the environment.
-
-        Returns:
-            List[int]: List of actions, one for each agent.
-        """
-        actions = []
-        # observation['agents'] provides agent info in order; map by id
-        agents_info = {a['id']: a for a in observation['agents']}
-        for ag in self.agents:
-            info = agents_info.get(ag.agent_id)
-            if info is None:
-                # fallback: idle action
-                actions.append(0)
-            else:
-                actions.append(ag.act(info, observation))
-        return actions
+from typing import List, Dict, Any, Optional, Tuple
+from agents.greedy_agent import manhattan_distance
+from agents.pathfinding import a_star_search
+from env.constants import (
+    ACTION_STAY,
+    ACTION_UP,
+    ACTION_DOWN,
+    ACTION_LEFT,
+    ACTION_RIGHT,
+    ACTION_PICKUP,
+    ACTION_DROPOFF,
+    ACTION_DELTAS,
+    STATE_CARRYING,
+    CellType,
+)
 
 
 class TaskExecutor:
     """
-    Executor that follows high-level assignment strings for coordinated task execution.
-
-    Assignments specify tasks like rescuing specific victims. The executor translates
-    these high-level tasks into sequences of low-level actions.
-
-    Supported assignment formats:
-    - None or '': No operation (STAY)
-    - 'rescue V{victim_id}': Go to victim position, PICKUP, then go to nearest shelter, DROPOFF
-
-    Attributes:
-        num_agents (int): Number of agents being controlled.
-        assignments (Dict[int, Optional[str]]): Mapping of agent_id to assignment string.
-        _targets (Dict[int, Optional[int]]): Internal mapping of agent_id to target victim ID.
+    Executes declarative coordination assignments (e.g. 'rescue V2' or 'wait').
+    Manages low-level waypoint navigation, pickup, and delivery to shelters.
     """
 
-    def __init__(self, num_agents: int):
-        """
-        Initialize the TaskExecutor with a specified number of agents.
-
-        Args:
-            num_agents (int): Number of agents to control.
-        """
+    def __init__(self, num_agents: int = 3):
         self.num_agents = num_agents
-        # mapping agent_id -> assignment string
-        self.assignments: Dict[int, Optional[str]] = {i: None for i in range(num_agents)}
-        # internal state: agent_id -> target victim id
         self._targets: Dict[int, Optional[int]] = {i: None for i in range(num_agents)}
+        self._assignments: Dict[int, Optional[str]] = {i: None for i in range(num_agents)}
 
-    def set_assignment(self, agent_id: int, assignment: Optional[str]):
-        """
-        Set an assignment for a specific agent.
+    def set_assignment(self, agent_id: int, assignment: Optional[str]) -> None:
+        """Parses declarative directive into concrete victim target ID."""
+        if agent_id < 0 or agent_id >= self.num_agents:
+            return
 
-        Args:
-            agent_id (int): ID of the agent to assign the task to.
-            assignment (Optional[str]): Assignment string or None.
-        """
-        if agent_id not in self.assignments:
-            raise ValueError(f"Invalid agent_id {agent_id}. Must be between 0 and {self.num_agents - 1}.")
-        self.assignments[agent_id] = assignment
-        # parse assignment
-        if assignment and assignment.strip().lower().startswith('rescue'):
-            parts = assignment.strip().split()
-            if len(parts) >= 2 and parts[1].startswith('V'):
-                try:
-                    vid = int(parts[1][1:])
-                    self._targets[agent_id] = vid
-                except Exception:
-                    self._targets[agent_id] = None
+        self._assignments[agent_id] = assignment
+
+        if not assignment or not isinstance(assignment, str):
+            self._targets[agent_id] = None
+            return
+
+        clean = assignment.strip().lower()
+        if clean.startswith("rescue v"):
+            try:
+                vid_str = clean.replace("rescue v", "").strip()
+                self._targets[agent_id] = int(vid_str)
+            except ValueError:
+                self._targets[agent_id] = None
         else:
             self._targets[agent_id] = None
 
-    def act(self, observation: Dict[str, Any]) -> List[int]:
+    def get_assignment(self, agent_id: int) -> Optional[str]:
+        return self._assignments.get(agent_id)
+
+    def _get_obstacles(self, obs: Dict[str, Any]) -> set[Tuple[int, int]]:
+        """Extracts obstacle coordinates from observation grid."""
+        obstacles = set()
+        grid_rows = obs.get("grid", [])
+        for r_idx, row in enumerate(grid_rows):
+            if isinstance(row, str):
+                cells = row.split()
+                for c_idx, val in enumerate(cells):
+                    if val == str(int(CellType.OBSTACLE)):
+                        obstacles.add((c_idx, r_idx))
+        return obstacles
+
+    def _move_towards(
+        self,
+        src: Tuple[int, int],
+        dst: Tuple[int, int],
+        obstacles: set[Tuple[int, int]],
+        grid_size: int = 10,
+        dynamic_blocked_next: Optional[set[Tuple[int, int]]] = None,
+    ) -> int:
         """
-        Generate actions for all agents based on their current assignments and state.
-
-        Args:
-            observation (Dict[str, Any]): Global observation of the environment.
-
-        Returns:
-            List[int]: List of actions, one for each agent.
+        Calculates cardinal step towards dst using A* pathfinding with obstacle avoidance.
         """
-        from env.constants import ACTION_STAY, ACTION_UP, ACTION_DOWN, ACTION_LEFT, ACTION_RIGHT, ACTION_PICKUP, ACTION_DROPOFF
+        if src == dst:
+            return ACTION_STAY
 
+        path = a_star_search(
+            src, dst, obstacles, grid_size, dynamic_blocked_next=dynamic_blocked_next
+        )
+        if not path:
+            return ACTION_STAY
+
+        next_pos = path[0]
+        dx = next_pos[0] - src[0]
+        dy = next_pos[1] - src[1]
+
+        if dx == 1:
+            return ACTION_RIGHT
+        elif dx == -1:
+            return ACTION_LEFT
+        elif dy == 1:
+            return ACTION_DOWN
+        elif dy == -1:
+            return ACTION_UP
+
+        return ACTION_STAY
+
+    def act(self, obs: Dict[str, Any]) -> List[int]:
+        """Calculates joint actions for all managed agents with inter-agent collision avoidance."""
         actions = []
-        agents_info = {a['id']: a for a in observation['agents']}
-        victims = {v['id']: tuple(v['pos']) for v in observation.get('victims', [])}
-        shelters = observation.get('shelters', [])
+        agent_infos = obs.get("agents", [])
+        obstacles = self._get_obstacles(obs)
+        grid_size = obs.get("grid_size", 10)
+        reserved_next_positions: set[Tuple[int, int]] = set()
+
+        shelters_data = obs.get("shelters", [])
+        shelters_set = {tuple(s["pos"] if isinstance(s, dict) else s) for s in shelters_data}
+        depots_data = obs.get("depots", [])
+        depots_set = {tuple(d["pos"] if isinstance(d, dict) else d) for d in depots_data}
+        hub_cells = shelters_set | depots_set
+
+        # Build active victim lookup map: {id: victim_dict}
+        active_victims = {
+            v["id"]: v
+            for v in obs.get("victims", [])
+            if not v.get("rescued", False) and not v.get("died", False)
+        }
 
         for aid in range(self.num_agents):
-            info = agents_info.get(aid)
-            if info is None:
-                actions.append(ACTION_STAY)
-                continue
+            agent_info = agent_infos[aid] if aid < len(agent_infos) else {"pos": (0, 0), "carrying": None}
+            my_pos = tuple(agent_info["pos"])
 
-            apos = tuple(info['pos'])
-            target_vid = self._targets.get(aid)
+            # Check inventory capacity
+            inv_ids = agent_info.get("inventory")
+            if inv_ids is None:
+                inv_ids = [agent_info.get("carrying")] if agent_info.get("carrying") is not None else []
+            curr_capacity = len(inv_ids)
+            max_cap = agent_info.get("max_capacity", 2)
+            is_carrying = curr_capacity > 0 or agent_info.get("state") == STATE_CARRYING
 
-            # no target -> stay
-            if target_vid is None or target_vid not in victims:
-                actions.append(ACTION_STAY)
-                continue
+            shelters = obs.get("shelters", [])
+            shelter_pos = None
+            if shelters:
+                nearest_shelter = min(
+                    shelters,
+                    key=lambda s: manhattan_distance(my_pos, tuple(s["pos"] if isinstance(s, dict) else s)),
+                )
+                shelter_pos = tuple(nearest_shelter["pos"] if isinstance(nearest_shelter, dict) else nearest_shelter)
 
-            vpos = victims[target_vid]
+            # Check opportunistic adjacent/co-located victim when partially loaded
+            opportunistic_target = None
+            if 0 < curr_capacity < max_cap and shelter_pos:
+                candidates_opp = [
+                    v for v in active_victims.values()
+                    if v["id"] not in inv_ids and manhattan_distance(my_pos, tuple(v["pos"])) <= 1
+                ]
+                for cand in candidates_opp:
+                    cand_pos = tuple(cand["pos"])
+                    detour_steps = manhattan_distance(my_pos, cand_pos) + 1 + manhattan_distance(cand_pos, shelter_pos)
+                    safe = True
+                    for b_id in inv_ids:
+                        b_victim = next((v for v in obs.get("victims", []) if v["id"] == b_id), None)
+                        if b_victim:
+                            remaining = b_victim.get("max_wait", 40) - b_victim.get("wait_time", 0)
+                            if remaining <= detour_steps:
+                                safe = False
+                                break
+                    if safe:
+                        opportunistic_target = cand
+                        break
 
-            # If agent not carrying and on victim -> pickup
-            if info['carrying'] is None and apos == vpos:
-                actions.append(ACTION_PICKUP)
-                continue
+            # 1a. Carrying mode with a safe opportunistic pickup
+            if is_carrying and opportunistic_target is not None:
+                target_pos = tuple(opportunistic_target["pos"])
+                if my_pos == target_pos:
+                    actions.append(ACTION_PICKUP)
+                    act = ACTION_PICKUP
+                else:
+                    act = self._move_towards(
+                        my_pos,
+                        target_pos,
+                        obstacles,
+                        grid_size,
+                        dynamic_blocked_next=reserved_next_positions,
+                    )
+                    actions.append(act)
 
-            # If agent is carrying this victim, move to nearest shelter or dropoff if at shelter
-            if info['carrying'] is not None and info['carrying'] == target_vid:
-                if apos in shelters:
-                    actions.append(ACTION_DROPOFF)
-                    continue
-                # move towards nearest shelter
-                nearest = min(shelters, key=lambda s: abs(s[0] - apos[0]) + abs(s[1] - apos[1]))
-                actions.append(self._move_towards(apos, tuple(nearest)))
-                continue
+            # 1b. Carrying mode at max capacity or without safe opportunistic pickup -> Deliver to shelter
+            elif is_carrying:
+                if not shelters:
+                    actions.append(ACTION_STAY)
+                    act = ACTION_STAY
+                else:
+                    if my_pos == shelter_pos:
+                        actions.append(ACTION_DROPOFF)
+                        self._targets[aid] = None
+                        self._assignments[aid] = None
+                        act = ACTION_DROPOFF
+                    else:
+                        act = self._move_towards(
+                            my_pos,
+                            shelter_pos,
+                            obstacles,
+                            grid_size,
+                            dynamic_blocked_next=reserved_next_positions,
+                        )
+                        actions.append(act)
 
-            # Otherwise move towards victim
-            actions.append(self._move_towards(apos, vpos))
+            # 2. Idle mode -> Navigate to assigned target victim
+            else:
+                target_vid = self._targets.get(aid)
+
+                # Edge Case EC-2.2: Target has died, was rescued, or was not set
+                if target_vid is None or target_vid not in active_victims:
+                    self._targets[aid] = None
+                    self._assignments[aid] = None
+                    actions.append(ACTION_STAY)
+                    act = ACTION_STAY
+                else:
+                    target_v = active_victims[target_vid]
+                    target_pos = tuple(target_v["pos"])
+
+                    if my_pos == target_pos:
+                        actions.append(ACTION_PICKUP)
+                        act = ACTION_PICKUP
+                    else:
+                        act = self._move_towards(
+                            my_pos,
+                            target_pos,
+                            obstacles,
+                            grid_size,
+                            dynamic_blocked_next=reserved_next_positions,
+                        )
+                        actions.append(act)
+
+            # Track reserved next position for lower-priority agents
+            if act in ACTION_DELTAS and act != ACTION_STAY:
+                dx, dy = ACTION_DELTAS[act]
+                next_cell = (my_pos[0] + dx, my_pos[1] + dy)
+            else:
+                next_cell = my_pos
+
+            if next_cell not in hub_cells:
+                reserved_next_positions.add(next_cell)
 
         return actions
-
-    @staticmethod
-    def _move_towards(src: tuple, dst: tuple) -> int:
-        """
-        Calculate the action to move from source towards destination.
-
-        Args:
-            src (tuple): Source position (x, y).
-            dst (tuple): Destination position (x, y).
-
-        Returns:
-            int: Action ID for movement.
-        """
-        sx, sy = src
-        dx, dy = dst
-        from env.constants import ACTION_STAY, ACTION_UP, ACTION_DOWN, ACTION_LEFT, ACTION_RIGHT
-        if sx < dx:
-            return ACTION_RIGHT
-        if sx > dx:
-            return ACTION_LEFT
-        if sy < dy:
-            return ACTION_DOWN
-        if sy > dy:
-            return ACTION_UP
-        return ACTION_STAY

@@ -1,0 +1,64 @@
+# Environment variables and secrets
+.env
+*.env
+*.pem
+*.key
+*.secret
+*.token
+credentials.json
+token.json
+
+# Python caches and compiled bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & coverage caches
+.pytest_cache/
+.coverage
+htmlcov/
+.coverage.*
+
+# Documentation markdown (per instructions)
+docs/
+
+# Agent, skill, and AI tooling configs & artifacts
+.agents/
+AGENTS.md
+.planning/
+.taste-skill/
+.testsprite/
+testsprite_tests/
+.coderabbit.yaml
+.github/agents/
+
+# Scratch runs, simulation traces, and generated reports
+trace.json
+scripts/benchmark_report.md
+scripts/benchmark_results.csv
+examples/saved_runs/
+logs/
+ppo_tensorboard/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

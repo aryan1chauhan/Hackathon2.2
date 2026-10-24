@@ -1,108 +1,121 @@
-from typing import Dict, List, Tuple, Optional
-from env import DisasterReliefEnv
-import itertools
+"""
+Classical Combinatorial Hungarian Algorithm Coordinator for Multi-Agent Disaster Relief.
+"""
 
-try:
-    from scipy.optimize import linear_sum_assignment
-    _HAS_SCIPY = True
-except Exception:
-    linear_sum_assignment = None
-    _HAS_SCIPY = False
+from typing import Dict, Any, Optional, List, Tuple
+import numpy as np
+from scipy.optimize import linear_sum_assignment
+from agents.greedy_agent import manhattan_distance
+from agents.pathfinding import a_star_search
+from env.constants import STATE_CARRYING, CellType
 
 
-def _cost(agent_pos, victim, urgency_weight: float = 4.0) -> float:
-    """Cost function for assigning agent -> victim.
-
-    Lower cost is better. We combine travel distance (Manhattan) and urgency.
-    We subtract urgency_weight * urgency_score so high-urgency victims reduce cost.
-    """
-    dist = abs(agent_pos[0] - victim.pos[0]) + abs(agent_pos[1] - victim.pos[1])
-    urgency = victim.urgency()
-    return dist - urgency_weight * urgency
+def _extract_obstacles(obs: Dict[str, Any]) -> set[Tuple[int, int]]:
+    obstacles = set()
+    grid_rows = obs.get("grid", [])
+    for r_idx, row in enumerate(grid_rows):
+        if isinstance(row, str):
+            cells = row.split()
+            for c_idx, val in enumerate(cells):
+                if val == str(int(CellType.OBSTACLE)):
+                    obstacles.add((c_idx, r_idx))
+    return obstacles
 
 
 class SimpleCoordinator:
-    """Coordinator that assigns victims to agents using min-cost assignment.
-
-    If SciPy is available it uses the Hungarian algorithm (`linear_sum_assignment`).
-    Otherwise it falls back to a brute-force search over permutations limited
-    to a small candidate set (top victims by urgency).
+    """
+    Global fleet coordinator using the Hungarian algorithm to compute an optimal,
+    bipartite assignment minimizing fleet transit time while prioritizing critical victims.
     """
 
     def __init__(self, assign_interval: int = 1, urgency_weight: float = 4.0):
         self.assign_interval = assign_interval
-        self.last_assign_step = -1
         self.urgency_weight = urgency_weight
+        self.current_assignments: Dict[int, Optional[str]] = {}
+        self.last_assigned_step = -1
 
-    def assign(self, env: DisasterReliefEnv, step: int) -> Dict[int, Optional[str]]:
-        """Return mapping agent_id -> assignment string or None"""
-        assignments: Dict[int, Optional[str]] = {i: None for i in range(env.num_agents)}
+    def assign(self, env_or_obs: Any, step: int = 0) -> Dict[int, Optional[str]]:
+        """
+        Computes optimal global assignment mapping agent_id -> 'rescue V{id}' or None.
+        Accepts either DisasterReliefEnv instance or observation dictionary.
+        """
+        # Periodic interval check
+        if (
+            self.last_assigned_step >= 0
+            and step - self.last_assigned_step < self.assign_interval
+            and self.current_assignments
+        ):
+            return self.current_assignments
 
-        # Only assign on the configured interval
-        if (step - self.last_assign_step) < self.assign_interval:
+        # Normalize observation
+        if isinstance(env_or_obs, dict):
+            obs = env_or_obs
+        elif hasattr(env_or_obs, "get_observation"):
+            obs = env_or_obs.get_observation()
+        else:
+            raise ValueError("env_or_obs must be DisasterReliefEnv or observation dict")
+
+        agents_data = obs.get("agents", [])
+        num_agents = len(agents_data)
+        assignments: Dict[int, Optional[str]] = {a["id"]: None for a in agents_data}
+
+        # Filter active, unrescued, non-dead victims
+        active_victims = [
+            v for v in obs.get("victims", [])
+            if not v.get("rescued", False) and not v.get("died", False)
+        ]
+
+        # Edge Case EC-3.4: Zero active victims on the grid
+        if not active_victims or num_agents == 0:
+            self.current_assignments = assignments
+            self.last_assigned_step = step
             return assignments
 
-        self.last_assign_step = step
+        # Build Cost Matrix: C[i, j] = True_Dist(Agent_i, Victim_j) - urgency_weight * Urgency(Victim_j)
+        num_victims = len(active_victims)
+        cost_matrix = np.zeros((num_agents, num_victims), dtype=np.float64)
+        obstacles = _extract_obstacles(obs)
+        grid_size = obs.get("grid_size", 10)
 
-        # Active victims
-        active_victims = [v for v in env.victims if not v.rescued and not v.died]
-        if not active_victims:
-            return assignments
+        for i, agent in enumerate(agents_data):
+            agent_pos = tuple(agent["pos"])
+            is_carrying = (
+                agent.get("carrying") is not None
+                or agent.get("state") == STATE_CARRYING
+            )
 
-        # Sort victims by urgency descending and limit candidates
-        victims_sorted = sorted(active_victims, key=lambda v: -v.urgency())
-        idle_agents = [a for a in env.agents if a.is_available()]
-        if not idle_agents:
-            return assignments
+            for j, victim in enumerate(active_victims):
+                if is_carrying:
+                    # Heavily penalize assigning an agent already carrying a victim
+                    cost_matrix[i, j] = 1e6
+                else:
+                    v_pos = tuple(victim["pos"])
+                    if agent_pos == v_pos:
+                        dist = 0
+                    else:
+                        path = a_star_search(agent_pos, v_pos, obstacles, grid_size)
+                        dist = len(path) if path else 1e6
 
-        max_candidates = max(len(idle_agents) * 4, len(idle_agents))
-        candidates = victims_sorted[:max_candidates]
+                    if dist >= 1e6:
+                        cost_matrix[i, j] = 1e6
+                    else:
+                        urgency = float(victim.get("urgency", 1.0))
+                        # Lower cost means higher priority assignment
+                        cost_matrix[i, j] = float(dist) - (self.urgency_weight * urgency)
 
-        # If SciPy is available, build cost matrix and run Hungarian
-        if _HAS_SCIPY and len(candidates) > 0:
-            import numpy as np
+        # Solve Hungarian Bipartite Matching in polynomial time O(N^3)
+        row_ind, col_ind = linear_sum_assignment(cost_matrix)
 
-            n_agents = len(idle_agents)
-            n_cand = len(candidates)
-            cost_mat = np.zeros((n_agents, n_cand), dtype=float)
-            for i, agent in enumerate(idle_agents):
-                for j, victim in enumerate(candidates):
-                    cost_mat[i, j] = _cost(agent.pos, victim, self.urgency_weight)
+        # Populate assignments
+        for r, c in zip(row_ind, col_ind):
+            agent_id = agents_data[r]["id"]
+            # Only assign if agent is not carrying and cost is valid
+            if cost_matrix[r, c] < 1e5:
+                victim_id = active_victims[c]["id"]
+                assignments[agent_id] = f"rescue V{victim_id}"
+            else:
+                assignments[agent_id] = None
 
-            # Solve assignment (rows->agents, cols->victims)
-            row_ind, col_ind = linear_sum_assignment(cost_mat)
-            for r, c in zip(row_ind, col_ind):
-                if r < len(idle_agents) and c < len(candidates):
-                    aid = idle_agents[r].id
-                    vid = candidates[c].id
-                    assignments[aid] = f'rescue V{vid}'
-
-            return assignments
-
-        # Fallback: brute-force over permutations for small sizes
-        n_agents = len(idle_agents)
-        n_candidates = len(candidates)
-        best_total = None
-        best_mapping = None
-        max_k = min(n_agents, n_candidates)
-        if max_k == 0:
-            return assignments
-        for k in range(1, max_k + 1):
-            for perm in itertools.permutations(range(n_candidates), k):
-                total = 0.0
-                mapping = {}
-                for a_idx, victim_idx in enumerate(perm):
-                    agent = idle_agents[a_idx]
-                    victim = candidates[victim_idx]
-                    total += _cost(agent.pos, victim, self.urgency_weight)
-                    mapping[agent.id] = victim.id
-
-                if best_total is None or total < best_total:
-                    best_total = total
-                    best_mapping = mapping
-
-        if best_mapping:
-            for aid, vid in best_mapping.items():
-                assignments[aid] = f'rescue V{vid}'
-
+        self.current_assignments = assignments
+        self.last_assigned_step = step
         return assignments

@@ -1,131 +1,75 @@
-import sys
+"""
+Headless CLI Demo Runner for Disaster LLM Coordinator Platform.
+Executes multi-agent disaster relief operations and outputs formatted metrics.
+"""
+
 import os
-import time
-import json
-import random
-from datetime import datetime
-
-# ensure package path
-sys.path.append(os.path.dirname(__file__))
-
-
-from env import DisasterReliefEnv
-from agents import GreedyAgent, MultiAgentController, TaskExecutor
-from coordinator.llm_coordinator import LLMCoordinator, validate_llm_output
+import sys
 import argparse
-from coordinator import SimpleCoordinator
+import json
+
+# Ensure local module priority
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from backend.runner import run_episode
 
 
-def build_controller(env, mode='greedy', llm_client=None):
-    if mode == 'greedy':
-        agents = [GreedyAgent(agent_id=i) for i in range(env.num_agents)]
-        return MultiAgentController(agents)
-    elif mode == 'assigned':
-        te = TaskExecutor(num_agents=env.num_agents)
-        # default assignment: first agent rescues victim 0 (if exists)
-        if env.victims:
-            te.set_assignment(0, f'rescue V{env.victims[0].id}')
-        return te
-    elif mode == 'coordinated':
-        te = TaskExecutor(num_agents=env.num_agents)
-        # coordinator will be used in run loop to set assignments
-        return te
-    elif mode == 'llm':
-        # LLMCoordinator will be used in run loop
-        te = TaskExecutor(num_agents=env.num_agents)
-        return te
-    else:
-        raise ValueError('unknown mode')
+def main():
+    parser = argparse.ArgumentParser(
+        description="AegisCoord Headless CLI Simulation Runner",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--mode",
+        type=str,
+        default="coordinated",
+        choices=["greedy", "coordinated", "llm"],
+        help="Coordination architecture: greedy (decentralized), coordinated (Hungarian), or llm (cognitive broker).",
+    )
+    parser.add_argument("--steps", type=int, default=40, help="Number of simulation steps to execute.")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed for world generation.")
+    parser.add_argument("--grid-size", type=int, default=10, help="Grid size (N x N).")
+    parser.add_argument("--agents", type=int, default=3, help="Number of relief agents.")
+    parser.add_argument("--victims", type=int, default=8, help="Number of initial victims.")
+    parser.add_argument("--export", type=str, default="trace.json", help="Path to export trace JSON file.")
+    parser.add_argument("--quiet", action="store_true", help="Suppress verbose step logs.")
 
-
-def run_episode(save_dir="examples/saved_runs", max_steps=200, seed=None, mode='greedy', llm_client=None):
-    os.makedirs(save_dir, exist_ok=True)
-    env = DisasterReliefEnv(seed=seed)
-    obs = env.reset()
-
-    trace = {
-        'started_at': datetime.utcnow().isoformat() + 'Z',
-        'grid_size': env.grid_size,
-        'num_agents': env.num_agents,
-        'steps': []
-    }
-
-    controller = build_controller(env, mode=mode, llm_client=llm_client)
-    coordinator = None
-    llm_coordinator = None
-    if mode == 'coordinated':
-        coordinator = SimpleCoordinator(assign_interval=1, urgency_weight=1.0)
-    elif mode == 'llm':
-        # Dummy LLM client for now (replace with real call)
-        def dummy_llm_client(prompt):
-            # Always assign 'wait' for all agents
-            return json.dumps({str(i): 'wait' for i in range(env.num_agents)})
-        llm_coordinator = LLMCoordinator(
-            llm_client=llm_client or dummy_llm_client,
-            validator=validate_llm_output
-        )
-
-    for step in range(max_steps):
-        obs = env.get_observation()
-        # LLM mode: get assignments from LLMCoordinator
-        if llm_coordinator is not None:
-            try:
-                assignments = llm_coordinator.assign(env, obs)
-                # Only TaskExecutor supports set_assignment
-                from agents.simple_executor import TaskExecutor
-                if isinstance(controller, TaskExecutor):
-                    for aid, a in assignments.items():
-                        if a is not None:
-                            controller.set_assignment(int(aid), a)
-            except Exception as e:
-                # fallback: do nothing, controller will use previous assignments
-                pass
-        elif coordinator is not None:
-            assigns = coordinator.assign(env, env.current_step)
-            from agents.simple_executor import TaskExecutor
-            if isinstance(controller, TaskExecutor):
-                for aid, a in assigns.items():
-                    if a is not None:
-                        controller.set_assignment(aid, a)
-
-        actions = controller.act(obs)
-        obs, rewards, done, info = env.step(actions)
-
-        trace['steps'].append({
-            'step': info['step'],
-            'actions': actions,
-            'rewards': rewards,
-            'info': info,
-            'agents': obs['agents'],
-            'victims': obs['victims']
-        })
-
-        if done:
-            break
-
-    trace['ended_at'] = datetime.utcnow().isoformat() + 'Z'
-    trace['summary'] = {
-        'total_spawned': env.total_spawned,
-        'total_rescued': env.total_rescued,
-        'total_died': env.total_died,
-        'steps': env.current_step
-    }
-
-    ts = datetime.now().strftime('%Y%m%d_%H%M%S')
-    fname = os.path.join(save_dir, f'run_{ts}.json')
-    with open(fname, 'w', encoding='utf-8') as f:
-        json.dump(trace, f, indent=2)
-
-    return fname, trace
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--mode', choices=['greedy', 'assigned', 'coordinated', 'llm'], default='greedy')
-    parser.add_argument('--steps', type=int, default=200)
-    parser.add_argument('--seed', type=int, default=0)
     args = parser.parse_args()
 
-    fname, trace = run_episode(max_steps=args.steps, seed=args.seed, mode=args.mode)
-    print('Run saved to', fname)
-    print('Summary:', trace['summary'])
+    print("=" * 65)
+    print(f"AEGISCOORD // HEADLESS DEMO RUNNER [{args.mode.upper()} MODE]")
+    print(f"Grid: {args.grid_size}x{args.grid_size} | Fleet: {args.agents} Agents | Seed: {args.seed} | Steps: {args.steps}")
+    print("=" * 65)
+
+    result = run_episode(
+        mode=args.mode,
+        steps=args.steps,
+        seed=args.seed,
+        grid_size=args.grid_size,
+        num_agents=args.agents,
+        num_victims=args.victims,
+        export_path=args.export,
+        verbose=not args.quiet,
+    )
+
+    summary = result["summary"]
+    print("\n" + "=" * 65)
+    print("EPISODE COMPLETION SUMMARY")
+    print("=" * 65)
+    print(f"  Mode:                  {summary['mode'].upper()}")
+    print(f"  Total Steps:           {summary['steps']}")
+    print(f"  Total Rescued:         {summary['total_rescued']}")
+    print(f"  Total Casualties:      {summary['total_died']}")
+    total_handled = summary["total_rescued"] + summary["total_died"]
+    survival_pct = (summary["total_rescued"] / total_handled * 100.0) if total_handled > 0 else 100.0
+    print(f"  Survival Rate:         {survival_pct:.1f}%")
+    print(f"  Avg Wait Time:         {summary['avg_wait_time']:.2f} s")
+    print(f"  Jain's Fairness (J):   {summary['fairness_index']:.4f}")
+    print(f"  Agent Workloads:       {summary['agent_rescues']}")
+    print(f"  Execution Time:        {summary['elapsed_seconds']:.3f} s")
+    print(f"  Trace File Export:     {os.path.abspath(args.export)}")
+    print("=" * 65)
+
+
+if __name__ == "__main__":
+    main()
